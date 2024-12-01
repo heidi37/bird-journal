@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Nature Journal</title>
+</head>
+<body>
+  <h1>Nature Journal</h1>
+  <form action="/addEntry" method="POST">
+    <div class="formRow">
+      <label for="date">Date</label><br>
+      <input type="date" name="date" id="date">
+    </div>
+    <div class="formRow">
+      <label for="commonName">Common Name</label><br>
+      <input type="text" name="commonName" placeholder= "American Robin" id="commonName">
+    </div>
+    <div class="formRow">
+      <label for="latinName">Latin Name</label><br>
+      <input type="text" name="latinName" placeholder= "Turdus migratorius" id="latinName">
+    </div>
+    <div class="formRow">
+      <label for="ovbservations">Observations</label><br>
+      <textarea id="observations" name="observations" placeholder="This is what I saw..." rows="10"></textarea>
+    </div>
+    <div class="formRow">
+      <label for="image">Image URL</label><br>
+      <input type="url" name="image" id="image">
+    </div>
+    <div class="formRow">
+      <label for="reference">Reference URL</label><br>
+      <input type="url" name="reference" id="reference">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <script src="main.js"></script>
+</body>
+</html>
