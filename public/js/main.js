@@ -1,14 +1,10 @@
-const today = new Date().toISOString().split("T")[0]
-document.getElementById("date").value = today
-
 const likes = document.querySelectorAll(".fa-thumbs-up")
 const trash = document.querySelectorAll(".fa-trash")
-
-console.log(likes)
 
 likes.forEach(like => like.addEventListener("click", addLike)) 
   
   async function addLike() {
+    console.log("Clicked:", this.parentNode.parentNode.childNodes[3].innerText)
     const sDate = this.parentNode.parentNode.childNodes[1].innerText
     const sName = this.parentNode.parentNode.childNodes[3].innerText
     const tLikes = Number(

@@ -16,7 +16,6 @@ MongoClient.connect(DB_STRING).then((client) => {
 })
 
 app.set("view engine", "ejs")
-
 app.use(express.static("public"))
 //for reading data from the form (middleware)
 //extract data from the form element and add thm to the body property in the request object
