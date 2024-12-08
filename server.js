@@ -46,7 +46,7 @@ MongoClient.connect(DB_STRING).then((client) => {
         }
       },{
         sort: {_id: -1},
-        upsert: true
+        upsert: false
       })
       .then(result => {
         console.log('Added One Like')
