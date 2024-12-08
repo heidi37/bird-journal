@@ -6,9 +6,9 @@ const trash = document.querySelectorAll(".fa-trash")
 
 console.log(likes)
 
-likes.forEach((like) => {
-  like.addEventListener("click", async function (e) {
-    // Send PUT Request here
+likes.forEach(like => like.addEventListener("click", addLike)) 
+  
+  async function addLike(e) {
     const sDate = e.target.parentNode.parentNode.childNodes[1].innerText
     const sName = e.target.parentNode.parentNode.childNodes[3].innerText
     const tLikes = Number(
@@ -31,8 +31,6 @@ likes.forEach((like) => {
     } catch (err) {
       console.log(err)
     }
-  })
-})
 
 trash.forEach((tCan) => {
   tCan.addEventListener("click", async function (e) {
@@ -57,3 +55,4 @@ trash.forEach((tCan) => {
     }
   })
 })
+}
