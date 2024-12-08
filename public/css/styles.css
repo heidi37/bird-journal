@@ -13,7 +13,7 @@ form {
   align-items: flex-start;
   background: #fff;
   width:fit-content;
-  padding: 1rem;
+  padding: 1.5rem 2rem;
   margin: 0 auto;
 }
 
@@ -28,10 +28,15 @@ label {
 
 .entriesList {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 .entry {
   padding: 1rem;
-  flex-basis: 175px;
+  flex-basis: 155px;
+  background: white;
 }
 
 img {
