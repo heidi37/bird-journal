@@ -1,6 +1,6 @@
 # Nature Journal
 
-[View Live Project]()
+[View Live Project](https://nature-journal.onrender.com)
 
 ## How It's Made:
 This is a node.js/Express API, using EJS templates and a MongoDB database. I built this for [#100devs](https://100devs.org/about).
