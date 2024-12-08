@@ -5,10 +5,11 @@ require('dotenv').config();
 
 const PORT = 3000
 const DB_STRING = process.env.DB_STRING
+const dbName = "nature-journal"
 
 MongoClient.connect(DB_STRING).then((client) => {
-  console.log('Connected to Database')
-  const db = client.db('nature-journal')
+  console.log(`Connected to ${dbName} Database`)
+  const db = client.db(dbName)
   const entriesCollection = db.collection('entries')
 
   app.set('view engine', 'ejs')
