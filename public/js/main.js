@@ -8,11 +8,11 @@ console.log(likes)
 
 likes.forEach(like => like.addEventListener("click", addLike)) 
   
-  async function addLike(e) {
-    const sDate = e.target.parentNode.parentNode.childNodes[1].innerText
-    const sName = e.target.parentNode.parentNode.childNodes[3].innerText
+  async function addLike() {
+    const sDate = this.parentNode.parentNode.childNodes[1].innerText
+    const sName = this.parentNode.parentNode.childNodes[3].innerText
     const tLikes = Number(
-      e.target.parentNode.parentNode.childNodes[11].innerText
+      this.parentNode.parentNode.childNodes[11].innerText
     )
 
     try {
@@ -31,12 +31,13 @@ likes.forEach(like => like.addEventListener("click", addLike))
     } catch (err) {
       console.log(err)
     }
+  }
 
-trash.forEach((tCan) => {
-  tCan.addEventListener("click", async function (e) {
-    // Send PUT Request here
-    const sDate = e.target.parentNode.parentNode.childNodes[1].innerText
-    const sName = e.target.parentNode.parentNode.childNodes[3].innerText
+trash.forEach(tCan => tCan.addEventListener("click", deleteOne))
+
+async function deleteOne(){
+    const sDate = this.parentNode.parentNode.childNodes[1].innerText
+    const sName = this.parentNode.parentNode.childNodes[3].innerText
 
     try {
       const response = await fetch("deleteEntry", {
@@ -53,6 +54,4 @@ trash.forEach((tCan) => {
     } catch (err) {
       console.log(err)
     }
-  })
-})
-}
+  }
