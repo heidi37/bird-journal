@@ -12,7 +12,7 @@ likes.forEach(like => like.addEventListener("click", addLike))
     )
 
     try {
-      const response = await fetch("addOneLike", {
+      const response = await fetch("likeBird", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -36,7 +36,7 @@ async function deleteOne(){
     const sName = this.parentNode.parentNode.childNodes[3].innerText
 
     try {
-      const response = await fetch("deleteEntry", {
+      const response = await fetch("deleteBird", {
         method: "delete",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
