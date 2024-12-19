@@ -30,7 +30,15 @@ I learned about implementing the CRUD operations in a full stack web application
 
 I also learned about environment variables.
 
-I learned about connecting to MongoDB and I had issues because my collection had a different name than what I was calling it in my app so I learned how to use different names for your collections inside the application. Also in your connection string you need to make sure that you specify the database name. Specifying the cluster is not required. I think that was causing a lot of issues querying the specific collection. Also along the way I somehow generate a test database with a "birds" and "entries" collection. I think this again was because my connect string wasn't quite right.
+I learned about connecting to MongoDB.
+
+I had issues because my database collection had a different name than what I was calling it in my app.
+
+I learned how to use different names for your collections inside the application.
+
+Along the way I somehow generated a "test" database with a "birds" and "entries" collection. The string I copied from MongoDB Atlas did not have the database name in it. Apparently without a database name in the connection string Mongoose will default to "test".
+
+Specifying the cluster in the connection string is not required but the string MongoDB Atlas gives you will have it in it at the end.
 
 ## Related Projects
 Here is another very simple web application that accesses a static API that I built for learning purposes:
