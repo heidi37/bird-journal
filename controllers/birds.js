@@ -27,7 +27,7 @@ module.exports = {
   },
   deleteBird: async (req, res) => {
     try {
-      await Bird.findOneAndDelete({date: req.body.dateS, commonName: req.body.commonNameS})
+      await Bird.findOneAndDelete({_id: req.body.idFromClientJs})
       console.log('Deleted Bird')
       res.json('Deleted It')
     } catch (err) {
@@ -36,9 +36,7 @@ module.exports = {
   },
   likeBird: async (req, res) => {
     try {
-      await Bird.findOneAndUpdate({date: req.body.dateS, commonName: req.body.commonNameS, likes: req.body.likesS}, {
-        likes: req.body.likesS + 1
-      })
+      await Bird.findOneAndUpdate({_id: req.body.idFromClientJs}, { $inc: { likes: 1 } } )
       console.log('Liked Bird')
       res.json('Liked It')
     } catch (err) {

@@ -18,7 +18,7 @@
   <button><a href="/html/addEntry.html">Add entry</a></button>
   <div class="entriesList">
   <% for(let i = 0; i < entries.length; i++) { %>
-    <div class="entry">
+    <div class="entry" data-id="<%= entries[i]._id %>">
       <p><%= entries[i].date %></p>
       <p><strong><%= entries[i].commonName %></strong></p>
       <p><%= entries[i].latinName %></p>

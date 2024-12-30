@@ -4,21 +4,14 @@ const trash = document.querySelectorAll(".fa-trash")
 likes.forEach(like => like.addEventListener("click", addLike)) 
   
   async function addLike() {
-    console.log("Clicked:", this.parentNode.parentNode.childNodes[3].innerText)
-    const sDate = this.parentNode.parentNode.childNodes[1].innerText
-    const sName = this.parentNode.parentNode.childNodes[3].innerText
-    const tLikes = Number(
-      this.parentNode.parentNode.childNodes[11].innerText
-    )
+    const selectedId = this.parentNode.parentNode.dataset.id
 
     try {
       const response = await fetch("likeBird", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          dateS: sDate,
-          commonNameS: sName,
-          likesS: tLikes,
+          'idFromClientJs': selectedId,
         }),
       })
       const data = await response.json()
@@ -32,16 +25,14 @@ likes.forEach(like => like.addEventListener("click", addLike))
 trash.forEach(tCan => tCan.addEventListener("click", deleteOne))
 
 async function deleteOne(){
-    const sDate = this.parentNode.parentNode.childNodes[1].innerText
-    const sName = this.parentNode.parentNode.childNodes[3].innerText
+    const selectedId = this.parentNode.parentNode.dataset.id
 
     try {
       const response = await fetch("deleteBird", {
         method: "delete",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          dateS: sDate,
-          commonNameS: sName,
+          'idFromClientJs': selectedId,
         }),
       })
       const data = await response.json()
