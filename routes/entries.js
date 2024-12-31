@@ -3,10 +3,7 @@ const router = express.Router()
 const entryController = require('../controllers/entries')
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
-router.get('/entries', ensureAuth, (req, res) => {
-  console.log("GET /entries route hit");  // Check if this logs
-  entryController.getEntries(req, res);
-});
+router.get('/', ensureAuth,entryController.getEntries)
 router.post('/addEntry', entryController.addEntry)
 router.delete('/deleteEntry', entryController.deleteEntry)
 router.put('/likeEntry', entryController.likeEntry)

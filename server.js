@@ -43,12 +43,7 @@ app.use(flash())
 
 app.use('/', mainRoutes);
 
-app.use('/', entryRoutes)
-console.log("Registered /entries route");
-// app.use("/addEntry", entryRoutes)
-// app.use("/deleteEntry", entryRoutes)
-// app.use("/likeEntry", entryRoutes)
-
+app.use('/entries', entryRoutes)
 
 app.listen(PORT, function () {
   console.log(`listening on ${PORT}`)
