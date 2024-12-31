@@ -29,6 +29,10 @@ const EntrySchema = new mongoose.Schema({
     type: Number,
     default: 0, // Default value for likes
   },
+  userId: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = mongoose.model('Entry', EntrySchema, 'entries');
