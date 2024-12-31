@@ -1,7 +1,9 @@
 # Nature Journal
 This is an application for tracking your observations in the wild.
 
-Until I have authentication set up I am not going to post the link to the application.
+[Live Project](https://nature-journal.onrender.com/)
+
+NOTE: hosted on free tier of render.com, may take a minute to spin up.
 
 Here is a Work In Progress Screenshot. I will be improving the design.
 
