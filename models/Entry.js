@@ -30,7 +30,8 @@ const EntrySchema = new mongoose.Schema({
     default: 0, // Default value for likes
   },
   userId: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true
   }
 });

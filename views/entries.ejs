@@ -28,6 +28,7 @@
       <p><%= entries[i].likes %> <i class="fa-solid fa-thumbs-up"></i></i></p>
       <p><a href="<%= entries[i].reference %>" target="_blank">Learn More</a></p>
       <p><i class="fa-solid fa-trash"></i></p>
+      <p>User: <%= entries[i].userId ? entries[i].userId.userName : "Unknown" %></p>
     </div>
     <%  } %>
   </div>

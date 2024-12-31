@@ -1,10 +1,15 @@
+const mongoose = require('mongoose')
 const Entry = require("../models/Entry")
 
 module.exports = {
   getEntries: async (req, res) => {
     try {
-      console.log(req.user);
-      const allEntries = await Entry.find({ userId: req.user._id })
+      console.log("User ID type:", typeof req.user._id);
+      const allEntries = await Entry.find({ userId: req.user._id }).populate(
+        "userId",
+        "userName"
+      )
+      console.log("Fetched entries:", allEntries)
       res.render("entries.ejs", { entries: allEntries })
     } catch (err) {
       console.log(err)

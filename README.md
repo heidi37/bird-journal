@@ -48,6 +48,8 @@ module.exports = mongoose.model('Entry', EntrySchema, 'entries');
 
 The line above exports the 'EntrySchema' defined in the model as 'Entry' from the 'entries' collection.
 
+The userId on an entry should be the data type "ObjectId".
+
 ## Related Projects
 Here is another very simple web application that accesses a static API that I built for learning purposes:
 https://heidifryzell.com/what-bird/
