@@ -36,17 +36,17 @@ I had issues because my database collection had a different name than what I was
 
 I learned how to use different names for your collections inside the application.
 
-Along the way I somehow generated a "test" database with a "birds" and "entries" collection. The string I copied from MongoDB Atlas did not have the database name in it. Apparently without a database name in the connection string Mongoose will default to "test".
+Along the way I somehow generated a "test" database with an "entries" collection. The string I copied from MongoDB Atlas did not have the database name in it. Apparently without a database name in the connection string Mongoose will default to "test".
 
 Specifying the cluster in the connection string is not required but the string MongoDB Atlas gives you will have it in it at the end.
 
 Also specifying the exact collection name in the model as a third parameter was required. If you don't specify one, the lowercase plural tense of the first parameter is supposed to be used.
 
 ```
-module.exports = mongoose.model('Bird', BirdSchema, 'entries');
+module.exports = mongoose.model('Entry', EntrySchema, 'entries');
 ```
 
-The line above exports the 'BirdSchema' defined in the model as 'Bird' from the 'entries' collection. In retrospect 'birds' probably would have been a better collection name.
+The line above exports the 'EntrySchema' defined in the model as 'Entry' from the 'entries' collection.
 
 ## Related Projects
 Here is another very simple web application that accesses a static API that I built for learning purposes:

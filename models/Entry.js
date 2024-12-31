@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const BirdSchema = new mongoose.Schema({
+const EntrySchema = new mongoose.Schema({
   date: {
     type: String, // Consider using Date type for better date handling
     required: true,
@@ -31,4 +31,4 @@ const BirdSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Bird', BirdSchema, 'entries');
+module.exports = mongoose.model('Entry', EntrySchema, 'entries');

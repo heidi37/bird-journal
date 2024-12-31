@@ -7,7 +7,7 @@ likes.forEach(like => like.addEventListener("click", addLike))
     const selectedId = this.parentNode.parentNode.dataset.id
 
     try {
-      const response = await fetch("likeBird", {
+      const response = await fetch("likeEntry", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -28,7 +28,7 @@ async function deleteOne(){
     const selectedId = this.parentNode.parentNode.dataset.id
 
     try {
-      const response = await fetch("deleteBird", {
+      const response = await fetch("deleteEntry", {
         method: "delete",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
