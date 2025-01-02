@@ -20,8 +20,10 @@ connectDB()
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
+// Look at parts of requests, form data
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+// Morgan logs
 app.use(logger('dev'))
 // Sessions
 app.use(
@@ -30,7 +32,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-      mongoUrl: process.env.DB_STRING, // Replace with your MongoDB connection string
+      mongoUrl: process.env.DB_STRING, 
     }),
   })
 )
@@ -42,7 +44,6 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', mainRoutes);
-
 app.use('/entries', entryRoutes)
 
 app.listen(PORT, function () {

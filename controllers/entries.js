@@ -8,8 +8,8 @@ module.exports = {
       const allEntries = await Entry.find({ userId: req.user._id }).populate(
         "userId",
         "userName"
-      )
-      console.log("Fetched entries:", allEntries)
+      ).sort({ date: "desc"}).lean()
+      //console.log("Fetched entries:", allEntries)
       res.render("entries.ejs", { entries: allEntries })
     } catch (err) {
       console.log(err)
