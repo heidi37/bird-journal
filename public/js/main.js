@@ -1,3 +1,6 @@
+const currentYear = new Date().getFullYear()
+document.getElementById('year').textContent = currentYear
+
 const likes = document.querySelectorAll(".fa-thumbs-up")
 const trash = document.querySelectorAll(".fa-trash")
 

@@ -13,8 +13,11 @@ form {
   align-items: flex-start;
   background: #fff;
   width:fit-content;
-  padding: 1.5rem 2rem;
+  padding: 2rem 2rem;
   margin: 0 auto;
+  input {
+    margin-bottom: 1rem;
+  }
 }
 
 label {
