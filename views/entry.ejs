@@ -12,6 +12,9 @@
       <p><%= entry.likes %> <i class="fa-solid fa-thumbs-up"></i></i></p>
       <p><a href="<%= entry.reference %>" target="_blank">Learn More</a></p>
       <!-- <p><%= entry.userId ? '<i class="fa-solid fa-trash"></i>' : '' %></p> -->
+       <%if(entry.userId._id.toString() == user.id) { %>
+        <p><i class="fa-solid fa-trash"></i></p>
+      <% } %>
       <p>User: <%= entry.userId ? entry.userId.userName : "Unknown" %></p>
     </div>
   </div>

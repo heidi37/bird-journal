@@ -40,7 +40,7 @@ async function deleteOne(){
       })
       const data = await response.json()
       console.log(data)
-      location.reload()
+      window.location.href = "/entries"
     } catch (err) {
       console.log(err)
     }

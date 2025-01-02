@@ -16,12 +16,14 @@ module.exports = {
   },
   getEntry: async (req, res) => {
     try {
-      const entry = await Entry.findById( req.params.id ).populate(
+      const entry = await Entry.findById(req.params.id).populate(
         "userId",
         "userName"
       )
       //console.log("Fetched entries:", allEntries)
-      res.render("entry.ejs", { entry: entry })
+      console.log(entry.userId._id.toString())
+      console.log(req.user.id)
+      res.render("entry.ejs", { entry: entry, user: req.user })
     } catch (err) {
       console.log(err)
     }
