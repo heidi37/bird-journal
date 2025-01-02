@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link
-      rel="stylesheet"
-      id="font-awesome-css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css?ver=6.5.1"
-      type="text/css"
-      media="all"
-    />
-  <link rel="stylesheet" href="css/styles.css">
-  <title>Nature Journal</title>
-</head>
-<body>
-  <h1>Nature Journal</h1>
-  <button><a href="/html/addEntry.html">Add entry</a></button>
-  <button><a href="/logout">Logout</a></button>
+<%- include('partials/header') -%>
+<body class="container">
+  <a href="/" class="btn btn-warning"><i class="fa-solid fa-house"></i></a>
+  <a href="/html/addEntry.html" class="btn btn-warning">Add entry</a>
+  <a href="/logout" class="btn btn-warning">Logout</a>
   <div class="entriesList">
   <% for(let i = 0; i < entries.length; i++) { %>
-    <div class="entry" data-id="<%= entries[i]._id %>">
+    <div class="entry card" data-id="<%= entries[i]._id %>">
       <p><%= entries[i].date %></p>
       <p><strong><%= entries[i].commonName %></strong></p>
       <p><%= entries[i].latinName %></p>
@@ -34,4 +20,4 @@
   </div>
   <script src="/js/main.js"></script>
 </body>
-</html>
+<%- include('partials/footer') -%>
