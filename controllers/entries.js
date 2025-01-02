@@ -4,7 +4,6 @@ const Entry = require("../models/Entry")
 module.exports = {
   getEntries: async (req, res) => {
     try {
-      console.log("User ID type:", typeof req.user._id);
       const allEntries = await Entry.find({ userId: req.user._id }).populate(
         "userId",
         "userName"
@@ -14,6 +13,24 @@ module.exports = {
     } catch (err) {
       console.log(err)
     }
+  },
+  getEntry: async (req, res) => {
+    try {
+      const entry = await Entry.findById( req.params.id ).populate(
+        "userId",
+        "userName"
+      )
+      //console.log("Fetched entries:", allEntries)
+      res.render("entry.ejs", { entry: entry })
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  getEntryForm: (req, res) => {
+    console.log("inside function")
+    res.render("entryForm.ejs", {
+      title: "Add New Entry"
+    })
   },
   addEntry: async (req, res) => {
     try {

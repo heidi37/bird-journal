@@ -1,0 +1,18 @@
+<%- include('partials/header') -%>
+  <a href="/" class="btn btn-warning"><i class="fa-solid fa-house"></i></a>
+  <a href="/entries" class="btn btn-warning">My Entries</a>
+  <a href="/html/addEntry.html" class="btn btn-warning">Add entry</a>
+  <a href="/logout" class="btn btn-warning">Logout</a>
+    <div class="entry mt-5" data-id="<%= entry._id %>">
+      <p><%= entry.date %></p>
+      <p><strong><%= entry.commonName %></strong></p>
+      <p><%= entry.latinName %></p>
+      <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" alt="<%= entry.commonName %>"></a>
+      <p><%= entry.observations %></p>
+      <p><%= entry.likes %> <i class="fa-solid fa-thumbs-up"></i></i></p>
+      <p><a href="<%= entry.reference %>" target="_blank">Learn More</a></p>
+      <!-- <p><%= entry.userId ? '<i class="fa-solid fa-trash"></i>' : '' %></p> -->
+      <p>User: <%= entry.userId ? entry.userId.userName : "Unknown" %></p>
+    </div>
+  </div>
+<%- include('partials/footer') -%>

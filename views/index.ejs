@@ -1,6 +1,5 @@
 <%- include('partials/header') -%>
-<body class="container">
-    <h2>Create Your VERY OWN Nature Journal!</h2>
+<body class="container"> 
     <a href="/login" class="btn btn-warning"> Login</a>
     <a href="/signup" class="btn btn-warning"> Signup</a>
 
@@ -8,13 +7,13 @@
         <% for(let i = 0; i < entries.length; i++) { %>
           <div class="entry card" data-id="<%= entries[i]._id %>">
             <p><%= entries[i].date %></p>
-            <p><strong><%= entries[i].commonName %></strong></p>
-            <p><%= entries[i].latinName %></p>
-            <a href="<%= entries[i].image %>"><img src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
-            <p><%= entries[i].observations %></p>
+            <!-- <p><%= entries[i].latinName %></p> -->
+            <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
+            <!-- <p><%= entries[i].observations %></p> -->
             <p><%= entries[i].likes %> <i class="fa-solid fa-thumbs-up"></i></i></p>
-            <p><a href="<%= entries[i].reference %>" target="_blank">Learn More</a></p>
-            <p>User: <%= entries[i].userId ? entries[i].userId.userName : "Unknown" %></p>
+            <!-- <p><a href="<%= entries[i].reference %>" target="_blank">Learn More</a></p>
+            <p>User: <%= entries[i].userId ? entries[i].userId.userName : "Unknown" %></p> -->
+            <p><strong><%= entries[i].commonName %></strong></p>
           </div>
           <%  } %>
         </div>
