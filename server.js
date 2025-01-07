@@ -6,6 +6,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const flash = require('express-flash')
 const logger = require('morgan')
+const methodOverride = require('method-override')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main');
 const entryRoutes = require('./routes/entries')
@@ -41,7 +42,10 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+// form validation messages
 app.use(flash())
+// method-override
+app.use(methodOverride("_method"));
 
 app.use('/', mainRoutes);
 app.use('/entries', entryRoutes)

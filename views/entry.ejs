@@ -9,10 +9,17 @@
       <p><%= entry.latinName %></p>
       <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" alt="<%= entry.commonName %>"></a>
       <p><%= entry.observations %></p>
-      <p><%= entry.likes %> <i class="fa-solid fa-thumbs-up"></i></i></p>
+      <div class="mt-2 mb-2"><%= entry.likes %> 
+          <form class="d-inline" action="/entries/likeEntry/<%= entry._id %>?_method=PUT" method="POST">
+            <button class="fa fa-thumbs-up" type="submit"></button>
+          </form>
+        </div>
       <p><a href="<%= entry.reference %>" target="_blank">Learn More</a></p>
        <%if(entry.userId._id.toString() == user.id) { %>
-        <p><i class="fa-solid fa-trash"></i></p>
+        <p>
+          <form action="/entries/deleteEntry/<%= entry._id %>?_method=DELETE" method="POST">
+            <button class="fa fa-trash" type="submit"></button>
+          </form></p>
       <% } %>
       <p>User: <%= entry.userId ? entry.userId.userName : "Unknown" %></p>
     </div>

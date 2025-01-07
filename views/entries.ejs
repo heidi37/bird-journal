@@ -12,10 +12,16 @@
       <p><strong><%= entries[i].commonName %></strong></p>
       <p><%= entries[i].latinName %></p>
       <p><%= entries[i].observations %></p>
-      <p><%= entries[i].likes %> <i class="fa-solid fa-thumbs-up"></i></i></p>
-      <!-- <p><a href="<%= entries[i].reference %>" target="_blank">Learn More</a></p> -->
-      <p><i class="fa-solid fa-trash"></i></p>
-      <!-- <p>User: <%= entries[i].userId ? entries[i].userId.userName : "Unknown" %></p> -->
+      <div class="mt-2 mb-2"><%= entries[i].likes %> 
+        <form class="d-inline" action="/entries/likeEntry/<%= entries[i]._id %>?_method=PUT" method="POST">
+          <button class="fa fa-thumbs-up" type="submit"></button>
+        </form>
+      </div>
+      <p>
+        <form action="/entries/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST">
+          <button class="fa fa-trash" type="submit"></button>
+        </form>
+      </p>
     </div>
     <%  } %>
   </div>

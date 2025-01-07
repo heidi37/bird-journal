@@ -5,6 +5,7 @@
     <a href="/signup" class="btn btn-warning"> Signup</a>
     <% } %>
     <% if (isAuthenticated) { %>
+    <a href="/entries" class="btn btn-warning">My entries</a>
     <a href="/logout" class="btn btn-warning"> Logout</a>
     <% } %>
     <h2 class="mt-5">all entries</h2>
@@ -12,12 +13,12 @@
         <% for(let i = 0; i < entries.length; i++) { %>
           <div class="entry card" data-id="<%= entries[i]._id %>">
             <p><%= entries[i].date %></p>
-            <!-- <p><%= entries[i].latinName %></p> -->
             <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
-            <!-- <p><%= entries[i].observations %></p> -->
-            <p><%= entries[i].likes %> <i class="fa-solid fa-thumbs-up"></i></i></p>
-            <!-- <p><a href="<%= entries[i].reference %>" target="_blank">Learn More</a></p>
-            <p>User: <%= entries[i].userId ? entries[i].userId.userName : "Unknown" %></p> -->
+            <div class="mt-2 mb-2"><%= entries[i].likes %> 
+              <form class="d-inline" action="/entries/likeEntry/<%= entries[i]._id %>?_method=PUT" method="POST">
+                <button class="fa fa-thumbs-up" type="submit"></button>
+              </form>
+            </div>
             <p><strong><%= entries[i].commonName %></strong></p>
           </div>
           <%  } %>

@@ -53,9 +53,9 @@ module.exports = {
   },
   deleteEntry: async (req, res) => {
     try {
-      await Entry.findOneAndDelete({ _id: req.body.idFromClientJs })
+      await Entry.findOneAndDelete({ _id: req.params.id })
       console.log("Deleted Entry")
-      res.json("Deleted It")
+      res.redirect("/entries")
     } catch (err) {
       console.log(err)
     }
@@ -63,11 +63,11 @@ module.exports = {
   likeEntry: async (req, res) => {
     try {
       await Entry.findOneAndUpdate(
-        { _id: req.body.idFromClientJs },
+        { _id: req.params.id },
         { $inc: { likes: 1 } }
       )
       console.log("Liked Entry")
-      res.json("Liked It")
+      res.redirect(req.get('referer'));
     } catch (err) {
       console.log(err)
     }

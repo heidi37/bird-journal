@@ -6,8 +6,8 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 router.get('/', ensureAuth, entryController.getEntries)
 router.get('/addEntry', ensureAuth, entryController.getEntryForm)
 router.post('/addEntry', entryController.addEntry)
-router.delete('/deleteEntry', entryController.deleteEntry)
-router.put('/likeEntry', entryController.likeEntry)
+router.delete('/deleteEntry/:id', entryController.deleteEntry)
+router.put('/likeEntry/:id', entryController.likeEntry)
 router.get('/:id', ensureAuth, entryController.getEntry)
 
 module.exports = router
