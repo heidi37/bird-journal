@@ -9,7 +9,8 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/login" method="POST">
+    <form class="centered-form" action="/login" method="POST">
+        <h2>Login</h2>
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <input type="submit" class="btn btn-success">
