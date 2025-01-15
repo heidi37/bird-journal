@@ -16,13 +16,8 @@ module.exports = {
   },
   getEntry: async (req, res) => {
     try {
-      const entry = await Entry.findById(req.params.id).populate(
-        "userId",
-        "userName"
-      )
-      //console.log("Fetched entries:", allEntries)
-      console.log(entry.userId._id.toString())
-      console.log(req.user.id)
+      const entry = await Entry.findById(req.params.id).populate("userId")
+
       res.render("entry.ejs", { entry: entry, user: req.user })
     } catch (err) {
       console.log(err)
