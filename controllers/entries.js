@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const cloudinary = require("../middleware/cloudinary");
 const Entry = require("../models/Entry")
 
 module.exports = {
@@ -31,12 +32,17 @@ module.exports = {
   },
   addEntry: async (req, res) => {
     try {
+      // Upload image to cloudinary
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        folder: 'bird-app',
+      });
       await Entry.create({
         date: req.body.date,
         commonName: req.body.commonName,
         latinName: req.body.latinName,
         observations: req.body.observations,
-        image: req.body.image,
+        image: result.secure_url,
+        cloudinaryId: result.public_id,
         reference: req.body.reference,
         userId: req.user.id,
       })
@@ -48,6 +54,16 @@ module.exports = {
   },
   deleteEntry: async (req, res) => {
     try {
+      // Find Entry by id
+      let entry = await Entry.findById(req.params.id);
+      if (!entry) {
+        req.flash("errors", { msg: "Entry not found." });
+        return res.redirect("/profile");
+      }
+
+      // Delete image from Cloudinary
+      await cloudinary.uploader.destroy(entry.cloudinaryId);
+
       await Entry.findOneAndDelete({ _id: req.params.id })
       console.log("Deleted Entry")
       res.redirect("/entries")

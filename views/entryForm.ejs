@@ -1,28 +1,28 @@
 <%- include('partials/header') -%>
-<form action="/entries/addEntry" method="POST">
+<form action="/entries/addEntry" enctype="multipart/form-data" method="POST">
   <div class="formRow">
-    <label for="date">Date</label><br>
-    <input type="date" name="date" id="date">
+    <label for="date" class="form-label">Date</label><br>
+    <input type="date" class="form-control" name="date" id="date">
   </div>
   <div class="formRow">
-    <label for="commonName">Common Name</label><br>
-    <input type="text" name="commonName" placeholder= "American Robin" id="commonName">
+    <label for="commonName" class="form-label">Common Name</label><br>
+    <input type="text" class="form-control" name="commonName" placeholder= "American Robin" id="commonName">
   </div>
   <div class="formRow">
-    <label for="latinName">Latin Name</label><br>
-    <input type="text" name="latinName" placeholder= "Turdus migratorius" id="latinName">
+    <label for="latinName" class="form-label">Latin Name</label><br>
+    <input type="text" class="form-control" name="latinName" placeholder= "Turdus migratorius" id="latinName">
   </div>
   <div class="formRow">
-    <label for="observations">Observations</label><br>
-    <textarea id="observations" name="observations" placeholder="This is what I saw..." rows="10"></textarea>
+    <label for="observations" class="form-label">Observations</label><br>
+    <textarea id="observations" class="form-control" name="observations" placeholder="This is what I saw..." rows="10"></textarea>
   </div>
   <div class="formRow">
-    <label for="image">Image URL</label><br>
-    <input type="url" name="image" id="image">
+    <label for="image" class="form-label">Image</label><br>
+    <input type="file" class="form-control" name="file" id="image">
   </div>
   <div class="formRow">
-    <label for="reference">Reference URL</label><br>
-    <input type="url" name="reference" id="reference">
+    <label for="reference" class="form-label">Reference URL</label><br>
+    <input type="url" class="form-control" name="reference" id="reference">
   </div>
   <input type="submit" class="btn btn-success">
 </form>
