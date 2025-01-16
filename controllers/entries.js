@@ -52,6 +52,42 @@ module.exports = {
       console.log(err)
     }
   },
+  getEditEntryForm: async (req, res) => {
+    // Find Entry by id
+    let entry = await Entry.findById(req.params.id);
+
+    if (!entry) {
+      req.flash("errors", { msg: "Entry not found." });
+      return res.redirect("/profile");
+    }
+    console.log("inside function")
+    res.render("editEntry.ejs", { entry: entry})
+  },
+  editEntry: async (req, res) => {
+    try {
+      // Find Entry by id
+      console.log("Request Body:", req.body);
+      let entry = await Entry.findById(req.params.id);
+
+      
+      if (!entry) {
+        req.flash("errors", { msg: "Entry not found." });
+        return res.redirect("/profile");
+      }
+
+      // Delete image from Cloudinary
+      // await cloudinary.uploader.destroy(entry.cloudinaryId);
+
+      await Entry.findOneAndUpdate({ _id: req.params.id }, req.body, {
+        new: true,
+        runValidators: true
+      })
+      console.log("Updated Entry")
+      res.redirect("/entries")
+    } catch (err) {
+      console.log(err)
+    }
+  },
   deleteEntry: async (req, res) => {
     try {
       // Find Entry by id

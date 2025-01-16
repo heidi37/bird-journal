@@ -7,7 +7,7 @@
       <p><%= entry.date %></p>
       <p><strong><%= entry.commonName %></strong></p>
       <p><%= entry.latinName %></p>
-      <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" alt="<%= entry.commonName %>"></a>
+      <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" class="entry-image" alt="<%= entry.commonName %>"></a>
       <p><%= entry.observations %></p>
       <div class="mt-2 mb-2"><%= entry.likes %> 
           <form class="d-inline" action="/entries/likeEntry/<%= entry._id %>?_method=PUT" method="POST">
@@ -22,6 +22,7 @@
           </form></p>
       <% } %>
       <p>User: <%= entry.userId ? entry.userId.userName : "Unknown" %></p>
+      <a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning">Edit Entry</a>
     </div>
   </div>
 <%- include('partials/footer') -%>
