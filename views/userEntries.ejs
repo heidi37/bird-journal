@@ -1,0 +1,29 @@
+<%- include('partials/header') -%>
+  <a href="/" class="btn btn-warning"><i class="fa-solid fa-house"></i></a>
+  <a href="/entries/addEntry" class="btn btn-warning">Add Entry</a>
+  <a href="/logout" class="btn btn-warning">Logout</a>
+  <h1>User Entries</h1>
+  <h2 class="mt-5"><%= user.userName %></h2>
+  <div class="entriesList">
+  <% for(let i = 0; i < entries.length; i++) { %>
+    <div class="entry card" data-id="<%= entries[i]._id %>">
+      <p><%= entries[i].date %></p>
+      <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
+      <br/>
+      <p><strong><%= entries[i].commonName %></strong></p>
+      <p><%= entries[i].latinName %></p>
+      <p><%= entries[i].observations %></p>
+      <div class="mt-2 mb-2"><%= entries[i].likes %> 
+        <form class="d-inline" action="/entries/likeEntry/<%= entries[i]._id %>?_method=PUT" method="POST">
+          <button class="fa fa-thumbs-up" type="submit"></button>
+        </form>
+      </div>
+      <!-- <p>
+        <form action="/entries/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST">
+          <button class="fa fa-trash" type="submit"></button>
+        </form>
+      </p> -->
+    </div>
+    <%  } %>
+  </div>
+<%- include('partials/footer') -%>

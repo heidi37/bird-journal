@@ -21,7 +21,7 @@
             <button class="fa fa-trash" type="submit"></button>
           </form></p>
       <% } %>
-      <p>User: <%= entry.userId ? entry.userId.userName : "Unknown" %></p>
+      <p>User: <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
       <a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning">Edit Entry</a>
     </div>
   </div>

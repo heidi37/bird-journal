@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const cloudinary = require("../middleware/cloudinary");
 const Entry = require("../models/Entry")
+const User = require("../models/User")
 
 module.exports = {
   getEntries: async (req, res) => {
@@ -115,6 +116,16 @@ module.exports = {
       )
       console.log("Liked Entry")
       res.redirect(req.get('referer'));
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  getUser: async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id)
+      const userEntries = await Entry.find({ userId: req.params.id }).sort({ date: "desc"}).lean()
+      const isAuthenticated = req.isAuthenticated()
+      res.render("userEntries.ejs", { user: user, entries: userEntries, isAuthenticated: isAuthenticated })
     } catch (err) {
       console.log(err)
     }
