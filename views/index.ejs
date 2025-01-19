@@ -8,18 +8,15 @@
     <a href="/entries" class="btn btn-warning">My entries</a>
     <a href="/logout" class="btn btn-warning"> Logout</a>
     <% } %>
-    <h2 class="mt-5">all entries</h2>
     <div class="entriesList">
         <% for(let i = 0; i < entries.length; i++) { %>
-          <div class="entry card" data-id="<%= entries[i]._id %>">
-            <p><%= entries[i].date %></p>
+          <div class="entry" data-id="<%= entries[i]._id %>">
             <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
-            <div class="mt-2 mb-2"><%= entries[i].likes %> 
+            <div class="mb-2"><%= entries[i].likes %> 
               <form class="d-inline" action="/entries/likeEntry/<%= entries[i]._id %>?_method=PUT" method="POST">
                 <button class="fa fa-thumbs-up" type="submit"></button>
               </form>
             </div>
-            <p><strong><%= entries[i].commonName %></strong></p>
           </div>
           <%  } %>
         </div>

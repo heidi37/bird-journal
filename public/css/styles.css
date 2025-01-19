@@ -1,6 +1,14 @@
 body {
   box-sizing: border-box;
-  background: rgb(247, 247, 235);
+  background: whitesmoke;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+h3 {
+  font-size: 24px;
 }
 
 button {
@@ -46,10 +54,11 @@ label {
   gap: 1rem;
   margin-top: 2rem;
 }
-.entry {
-  padding: 1rem;
-  flex-basis: 155px;
-  background: white;
+
+@media(max-width: 768px){
+  .entriesList {
+    justify-content: center;
+  }
 }
 
 .entry-image {
@@ -58,36 +67,18 @@ label {
 
 img {
   width: 100%;
-  object-fit: cover;
   border-radius: 5px;
   max-width: 600px;
 }
 
 img.thumbnail {
-  height: 125px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
 /* user page styles */
-.avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  img {
-    width: 100px;
-  }
-  .btn-profile-edit {
-    position: absolute;
-    border-radius: 50%;
-    right: 125px;
-  }
-}
 
-.user-info {
-  display: flex;
-  column-gap: 2rem;
+.avatar {
+  max-height: 200px;
 }

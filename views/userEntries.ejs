@@ -1,59 +1,57 @@
 <%- include('partials/header') -%>
-<a href="/" class="btn btn-warning"><i class="fa-solid fa-house"></i></a>
 <a href="/entries/addEntry" class="btn btn-warning">Add Entry</a>
 <a href="/logout" class="btn btn-warning">Logout</a>
 <section class="user-info">
-<div class="mt-5 avatar">
-  <div>
-    <img src="<%= user.cloudinaryId %>" alt="<%= user.userName %>" />
-    <button type="button" class="btn btn-secondary btn-profile-edit">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-pencil"
-        viewBox="0 0 16 16"
-        aria-label="add user picture"
-      >
-        <path
-          d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"
-        ></path>
-      </svg>
-    </button>
-  </div>
-</div>
-<div class="user-details">
-  <h2 class="mt-5"><%= user.userName %></h2>
-  <h3>About Me</h3>
-  <p><%= user.about %></p>
-</div>
-</section>
-<div class="entriesList">
-  <% for(let i = 0; i < entries.length; i++) { %>
-  <div class="entry card" data-id="<%= entries[i]._id %>">
-    <p><%= entries[i].date %></p>
-    <a href="/entries/<%= entries[i]._id %>"
-      ><img
-        class="thumbnail"
-        src="<%= entries[i].image %>"
-        alt="<%= entries[i].commonName %>"
-    /></a>
-    <br />
-    <p><strong><%= entries[i].commonName %></strong></p>
-    <p><%= entries[i].latinName %></p>
-    <p><%= entries[i].observations %></p>
-    <div class="mt-2 mb-2">
-      <%= entries[i].likes %>
-      <form
-        class="d-inline"
-        action="/entries/likeEntry/<%= entries[i]._id %>?_method=PUT"
-        method="POST"
-      >
-        <button class="fa fa-thumbs-up" type="submit"></button>
-      </form>
+  <div class="row mt-5">
+    <div class="col-12 col-lg-2">
+      <img src="<%= user.cloudinaryId %>" alt="<%= user.userName %>" class="avatar"/>
+      <button type="button" class="btn btn-secondary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-pencil"
+          viewBox="0 0 16 16"
+          aria-label="add user picture"
+        >
+          <path
+            d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="col-12 col-lg-8">
+      <h2 class="mb-4"><%= user.userName %></h2>
+      <h3>About Me</h3>
+      <p><%= user.about %></p>
+      <p>
+        <strong>Journaling Since: </strong><%=
+        user.createdAt.toLocaleDateString('en-US', { year: 'numeric', month:
+        'short', day: 'numeric' }) %>
+      </p>
+      <p><strong>Total Entries: </strong> <%= entries.length %></p>
+    </div>
+
+    <div class="col-12 col-lg-2">
+      <h2>Latest</h2>
+      <div class="entriesList">
+        <% for(let i = 0; i < 3; i++) { %>
+        <div class="entry" data-id="<%= entries[i]._id %>">
+          <a href="/entries/<%= entries[i]._id %>"
+            ><img
+              class="thumbnail"
+              src="<%= entries[i].image %>"
+              alt="<%= entries[i].commonName %>"
+          /></a>
+          <br/>
+          <%= entries[i].date %>
+        </div>
+        <% } %>
+      </div>
     </div>
   </div>
-  <% } %>
-</div>
+</section>
+
 <%- include('partials/footer') -%>
