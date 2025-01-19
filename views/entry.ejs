@@ -1,19 +1,25 @@
 <%- include('partials/header') -%>
-  <a href="/entries" class="btn btn-warning">My Entries</a>
-  <a href="/entries/addEntry" class="btn btn-warning">Add Entry</a>
-  <a href="/logout" class="btn btn-warning">Logout</a>
-    <div class="entry mt-5" data-id="<%= entry._id %>">
-      <p><%= entry.date %></p>
-      <p><strong><%= entry.commonName %></strong></p>
-      <p><%= entry.latinName %></p>
-      <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" class="entry-image" alt="<%= entry.commonName %>"></a>
-      <p><%= entry.observations %></p>
-      <div class="mt-2 mb-2"><%= entry.likes %> 
-          <form class="d-inline" action="/entries/likeEntry/<%= entry._id %>?_method=PUT" method="POST">
-            <button class="fa fa-thumbs-up" type="submit"></button>
-          </form>
-        </div>
-      <p><a href="<%= entry.reference %>" target="_blank">Learn More</a></p>
+<div class="row mt-5" data-id="<%= entry._id %>">
+<div class="col-12 col-lg-4">
+  <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" class="entry-image" alt="<%= entry.commonName %>"></a>
+  <div class="mt-2 mb-2"><%= entry.likes %> 
+    <form class="d-inline" action="/entries/likeEntry/<%= entry._id %>?_method=PUT" method="POST">
+      <button class="fa fa-thumbs-up" type="submit"></button>
+    </form>
+  </div>
+</div>
+<div class="col-12 col-lg-6">
+  <h2><%= entry.commonName %></h2>
+  <p><%= entry.date %></p>
+  <h3>Observations</h3>
+  <p><%= entry.observations %></p>
+</div>
+<div class="col-12 col-lg-2">
+  <p><strong>Common Name:</strong> <%= entry.commonName %></p>
+  <p><strong>Latin Name:</strong> <%= entry.latinName %></p>
+  <p><a href="<%= entry.reference %>" target="_blank">Learn More</a></p>
+</div>
+</div>
        <%if(entry.userId._id.toString() == user.id) { %>
         <p>
           <form action="/entries/deleteEntry/<%= entry._id %>?_method=DELETE" method="POST">
@@ -21,7 +27,5 @@
           </form></p>
       <% } %>
       <p>User: <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
-      <a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning">Edit Entry</a>
-    </div>
-  </div>
+      <a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit Entry</a>
 <%- include('partials/footer') -%>

@@ -10,8 +10,9 @@ module.exports = {
         "userId",
         "userName"
       ).sort({ date: "desc"}).lean()
+      const isAuthenticated = req.isAuthenticated()
       //console.log("Fetched entries:", allEntries)
-      res.render("entries.ejs", { entries: allEntries })
+      res.render("entries.ejs", { entries: allEntries, isAuthenticated: isAuthenticated })
     } catch (err) {
       console.log(err)
     }
@@ -19,16 +20,18 @@ module.exports = {
   getEntry: async (req, res) => {
     try {
       const entry = await Entry.findById(req.params.id).populate("userId")
+      const isAuthenticated = req.isAuthenticated()
 
-      res.render("entry.ejs", { entry: entry, user: req.user })
+      res.render("entry.ejs", { entry: entry, user: req.user, isAuthenticated: isAuthenticated })
     } catch (err) {
       console.log(err)
     }
   },
   getEntryForm: (req, res) => {
     console.log("inside function")
+    const isAuthenticated = req.isAuthenticated()
     res.render("entryForm.ejs", {
-      title: "Add New Entry"
+      title: "Add New Entry", isAuthenticated: isAuthenticated
     })
   },
   addEntry: async (req, res) => {
@@ -56,13 +59,14 @@ module.exports = {
   getEditEntryForm: async (req, res) => {
     // Find Entry by id
     let entry = await Entry.findById(req.params.id);
+    const isAuthenticated = req.isAuthenticated()
 
     if (!entry) {
       req.flash("errors", { msg: "Entry not found." });
       return res.redirect("/profile");
     }
     console.log("inside function")
-    res.render("editEntry.ejs", { entry: entry})
+    res.render("editEntry.ejs", { entry: entry, isAuthenticated: isAuthenticated})
   },
   editEntry: async (req, res) => {
     try {

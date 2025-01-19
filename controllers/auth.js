@@ -6,8 +6,10 @@ exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect("/entries")
   }
+  const isAuthenticated = req.isAuthenticated()
   res.render("login", {
     title: "Login",
+    isAuthenticated: isAuthenticated
   })
 }
 
@@ -69,8 +71,10 @@ exports.getSignup = (req, res) => {
   if (req.user) {
     return res.redirect("/entries")
   }
+  const isAuthenticated = req.isAuthenticated()
   res.render("signup", {
     title: "Create Account",
+    isAuthenticated: isAuthenticated
   })
 }
 

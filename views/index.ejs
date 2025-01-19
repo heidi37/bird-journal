@@ -1,13 +1,13 @@
 <%- include('partials/header') -%>
 <body class="container">
-    <% if (!isAuthenticated) { %>
+    <!-- <% if (!isAuthenticated) { %>
     <a href="/login" class="btn btn-warning"> Login</a>
     <a href="/signup" class="btn btn-warning"> Signup</a>
     <% } %>
     <% if (isAuthenticated) { %>
     <a href="/entries" class="btn btn-warning">My entries</a>
     <a href="/logout" class="btn btn-warning"> Logout</a>
-    <% } %>
+    <% } %> -->
     <div class="entriesList">
         <% for(let i = 0; i < entries.length; i++) { %>
           <div class="entry" data-id="<%= entries[i]._id %>">
