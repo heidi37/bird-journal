@@ -9,6 +9,8 @@ button {
   color: #15618c;
 }
 
+/* form styles */
+
 form {
   display: flex;
   flex-direction: column;
@@ -34,6 +36,8 @@ label {
 .formRow {
   margin: 4px 0;
 }
+
+/* entries styles */
 
 .entriesList {
   display: flex;
@@ -61,4 +65,29 @@ img {
 
 img.thumbnail {
   height: 125px;
+}
+
+/* user page styles */
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100px;
+  }
+  .btn-profile-edit {
+    position: absolute;
+    border-radius: 50%;
+    right: 125px;
+  }
+}
+
+.user-info {
+  display: flex;
+  column-gap: 2rem;
 }
