@@ -157,18 +157,18 @@ module.exports = {
 
       let updateData = { ...req.body };
 
-      if (req.file) {
-      // Delete image from Cloudinary
-      await cloudinary.uploader.destroy(user.cloudinaryId)
+      if(req.file) {
+        // Delete image from Cloudinary
+        await cloudinary.uploader.destroy(user.cloudinaryId)
 
-      const result = await cloudinary.uploader.upload(req.file.path, {
-        folder: 'bird-app/profile-photos',
-      });
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          folder: 'bird-app/profile-photos',
+        });
+        updateData.cloudinaryId = result.public_id;
+        updateData.image = result.secure_url;
+      }
 
-      updateData.cloudinaryId = result.public_id;
-      updateData.image = result.secure_url;
-    }
-
+      
       await User.findOneAndUpdate(
         { _id: req.params.id },
         updateData,

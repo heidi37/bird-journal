@@ -62,7 +62,7 @@ label {
 }
 
 .entry-image {
-  width: 400px;
+  width: 100%
 }
 
 img {
@@ -80,5 +80,6 @@ img.thumbnail {
 /* user page styles */
 
 .avatar {
-  max-height: 200px;
+  width: 175px;
+  height: 175px;
 }

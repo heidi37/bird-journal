@@ -2,7 +2,7 @@
 <div class="row mt-5" data-id="<%= entry._id %>">
 <div class="col-12 col-lg-4">
   <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" class="entry-image" alt="<%= entry.commonName %>"></a>
-  <div class="mt-2 mb-2"><%= entry.likes %> 
+  <div class="mt-2 mb-5"><%= entry.likes %> 
     <form class="d-inline" action="/entries/likeEntry/<%= entry._id %>?_method=PUT" method="POST">
       <button class="fa fa-thumbs-up" type="submit"></button>
     </form>
@@ -13,19 +13,18 @@
   <p><%= entry.date %></p>
   <h3>Observations</h3>
   <p><%= entry.observations %></p>
+  <p><strong>User:</strong> <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
 </div>
 <div class="col-12 col-lg-2">
   <p><strong>Common Name:</strong> <%= entry.commonName %></p>
   <p><strong>Latin Name:</strong> <%= entry.latinName %></p>
-  <p><a href="<%= entry.reference %>" target="_blank">Learn More</a></p>
+  <p><a href="<%= entry.reference %>" target="_blank" class="btn btn-primary">Learn More</a></p>
 </div>
 </div>
        <%if(entry.userId._id.toString() == user.id) { %>
-        <p>
+          <p><a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning my-1"><i class="fa fa-pencil"></i> Edit Entry</a></p>
           <form action="/entries/deleteEntry/<%= entry._id %>?_method=DELETE" method="POST">
-            <button class="fa fa-trash" type="submit"></button>
-          </form></p>
-          <a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit Entry</a>
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> Delete</button>
+          </form>
       <% } %>
-      <p>User: <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
 <%- include('partials/footer') -%>
