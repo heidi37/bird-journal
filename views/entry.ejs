@@ -25,7 +25,7 @@
           <form action="/entries/deleteEntry/<%= entry._id %>?_method=DELETE" method="POST">
             <button class="fa fa-trash" type="submit"></button>
           </form></p>
+          <a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit Entry</a>
       <% } %>
       <p>User: <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
-      <a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit Entry</a>
 <%- include('partials/footer') -%>
