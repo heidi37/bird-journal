@@ -63,21 +63,19 @@ module.exports = {
 
     if (!entry) {
       req.flash("errors", { msg: "Entry not found." });
-      return res.redirect("/profile");
+      return res.redirect("/entries");
     }
-    console.log("inside function")
     res.render("editEntry.ejs", { entry: entry, isAuthenticated: isAuthenticated})
   },
   editEntry: async (req, res) => {
     try {
       // Find Entry by id
-      console.log("Request Body:", req.body);
       let entry = await Entry.findById(req.params.id);
 
       
       if (!entry) {
         req.flash("errors", { msg: "Entry not found." });
-        return res.redirect("/profile");
+        return res.redirect("/entries");
       }
 
       // Delete image from Cloudinary
@@ -99,7 +97,7 @@ module.exports = {
       let entry = await Entry.findById(req.params.id);
       if (!entry) {
         req.flash("errors", { msg: "Entry not found." });
-        return res.redirect("/profile");
+        return res.redirect("/entries");
       }
 
       // Delete image from Cloudinary
@@ -132,6 +130,58 @@ module.exports = {
       res.render("userEntries.ejs", { user: user, entries: userEntries, isAuthenticated: isAuthenticated })
     } catch (err) {
       console.log(err)
+    }
+  },
+  getEditUserForm: async (req, res) => {
+    // Find User by id
+    let user = await User.findById(req.params.id);
+    const isAuthenticated = req.isAuthenticated()
+    console.log("user", user)
+
+    if (!user) {
+      req.flash("errors", { msg: "User not found." });
+      return res.redirect("/entries");
+    }
+    res.render("editUser.ejs", { user: user, isAuthenticated: isAuthenticated})
+  },
+  editUser: async (req, res) => {
+    try {
+      // Find User by id
+      let user = await User.findById(req.params.id);
+
+      
+      if (!user) {
+        req.flash("errors", { msg: "User not found." });
+        return res.redirect("/entries");
+      }
+
+      let updateData = { ...req.body };
+
+      if (req.file) {
+      // Delete image from Cloudinary
+      await cloudinary.uploader.destroy(user.cloudinaryId)
+
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        folder: 'bird-app/profile-photos',
+      });
+
+      updateData.cloudinaryId = result.public_id;
+      updateData.image = result.secure_url;
+    }
+
+      await User.findOneAndUpdate(
+        { _id: req.params.id },
+        updateData,
+        {
+        new: true,
+        runValidators: true
+      })
+      console.log("Updated User")
+      res.redirect("/entries/user/" + req.params.id)
+    } catch (err) {
+      console.log(err)
+      req.flash("errors", { msg: "An error occurred while updating the user." });
+      res.redirect("/entries");
     }
   },
 }

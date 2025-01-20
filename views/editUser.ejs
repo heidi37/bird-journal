@@ -1,0 +1,15 @@
+<%- include('partials/header') -%>
+<form class="centered-form" action="/entries/editUser/<%= user._id %>?_method=PUT" enctype="multipart/form-data" method="POST">
+  <div class="formRow">
+    <p><strong>Username:</strong> <%= user.userName %></p>
+    <label for="about" class="form-label"><strong>About Me</strong></label><br>
+    <textarea id="about" class="form-control" name="about" rows="10"><%=user.about%></textarea>
+  </div>
+  <div class="formRow">
+    <label for="cloudinaryId" class="form-label"><strong>Change User Image</strong></label><br>
+    <img src="<%= user.image %>" alt="current user image" class="rounded-circle w-25 my-2">
+    <input type="file" class="form-control" name="file" id="cloudinaryId">
+  </div>
+  <input type="submit" class="btn btn-success">
+</form>
+<%- include('partials/footer') -%>

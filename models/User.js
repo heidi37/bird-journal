@@ -13,9 +13,13 @@ const UserSchema = new mongoose.Schema({
   about: {
     type: String
   },
+  image: {
+    type: String,
+    default: "/images/avatar.svg"
+  },
   cloudinaryId: {
     type: String,
-    default: "/images/avatar.svg",
+    require: true,
   },
   createdAt: {
     type: Date,
