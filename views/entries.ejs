@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
   <h2 class="mt-5"><%= entries[0].userId.userName %></h2>
-  <div class="entriesList">
+  <div class="entriesList myEntries">
   <% for(let i = 0; i < entries.length; i++) { %>
     <div class="entry" data-id="<%= entries[i]._id %>">
       <p><%= entries[i].date %></p>

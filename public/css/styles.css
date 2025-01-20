@@ -14,7 +14,7 @@ h3 {
 button {
   border: none;
   background: none;
-  color: #15618c;
+  color: #0C5ED7;
 }
 
 /* form styles */
@@ -55,8 +55,28 @@ label {
   margin-top: 2rem;
 }
 
+@media(max-width: 768px){
+  .entriesList {
+    justify-content: center;
+  }
+}
+
+.entriesList.myEntries {
+  justify-content: flex-start;
+}
+
+.entry {
+  background: white;
+}
+
 .entry-image {
   width: 100%
+}
+
+.facts-column {
+  background: #0c5dd738;
+  padding: 1.5rem;
+  border-radius: 5px;
 }
 
 img {

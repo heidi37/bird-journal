@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
-<div class="row mt-5" data-id="<%= entry._id %>">
-<div class="col-12 col-lg-4">
+<div class="row mt-5 entry" data-id="<%= entry._id %>">
+<div class="col-12 col-lg-4 mt-5">
   <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" class="entry-image" alt="<%= entry.commonName %>"></a>
   <div class="mt-2 mb-5"><%= entry.likes %> 
     <form class="d-inline" action="/entries/likeEntry/<%= entry._id %>?_method=PUT" method="POST">
@@ -8,17 +8,18 @@
     </form>
   </div>
 </div>
-<div class="col-12 col-lg-6">
+<div class="col-12 col-lg-6 mt-5">
   <h2><%= entry.commonName %></h2>
   <p><%= entry.date %></p>
   <h3>Observations</h3>
   <p><%= entry.observations %></p>
   <p><strong>User:</strong> <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
 </div>
-<div class="col-12 col-lg-2">
+<div class="col-12 col-lg-2 facts-column">
+  <div class="mb-4 mt-5 text-center"><img class="w-75" src="/images/crow.png" alt="outline of crow"></div>
   <p><strong>Common Name:</strong> <%= entry.commonName %></p>
   <p><strong>Latin Name:</strong> <%= entry.latinName %></p>
-  <p><a href="<%= entry.reference %>" target="_blank" class="btn btn-primary">Learn More</a></p>
+  <p class="text-center mt-5"><a href="<%= entry.reference %>" target="_blank" class="btn btn-primary">Learn More</a></p>
 </div>
 </div>
        <%if(entry.userId._id.toString() == user.id) { %>
