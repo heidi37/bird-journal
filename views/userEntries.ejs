@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-  <h2 class="mt-5"><%= loggedInUser.userName %>'s entries</h2>
+  <h2 class="mt-5"><%= entries[0].userId.userName %>'s entries</h2>
   <div class="entriesList myEntries">
   <% for(let i = 0; i < entries.length; i++) { %>
     <div class="entry" data-id="<%= entries[i]._id %>">
@@ -7,11 +7,6 @@
       <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
       <br/>
       <p><strong><%= entries[i].commonName %></strong></p>
-      <p>
-        <form action="/entries/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST">
-          <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> Delete</button>
-        </form>
-      </p>
     </div>
     <%  } %>
   </div>

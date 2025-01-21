@@ -10,11 +10,25 @@ module.exports = {
         .sort({ date: "desc" })
         .lean()
       const isAuthenticated = req.isAuthenticated()
-      //console.log("Fetched entries:", allEntries)
       res.render("entries.ejs", {
         entries: allEntries,
         isAuthenticated: isAuthenticated,
-        user: req.user
+        loggedInUser: req.user
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  getAllUserEntries: async (req, res) => {
+    try {
+      const allUserEntries = await Entry.find({ userId: req.params.id }).populate("userId", "userName")
+        .sort({ date: "desc" })
+        .lean()
+      const isAuthenticated = req.isAuthenticated()
+      res.render("userEntries.ejs", {
+        entries: allUserEntries,
+        isAuthenticated: isAuthenticated,
+        loggedInUser: req.user
       })
     } catch (err) {
       console.log(err)
@@ -27,7 +41,7 @@ module.exports = {
 
       res.render("entry.ejs", {
         entry: entry,
-        user: req.user,
+        loggedInUser: req.user,
         isAuthenticated: isAuthenticated,
       })
     } catch (err) {
@@ -40,7 +54,7 @@ module.exports = {
     res.render("entryForm.ejs", {
       title: "Add New Entry",
       isAuthenticated: isAuthenticated,
-      user: req.user
+      loggedInUser: req.user
     })
   },
   addEntry: async (req, res) => {
@@ -77,7 +91,7 @@ module.exports = {
     res.render("editEntry.ejs", {
       entry: entry,
       isAuthenticated: isAuthenticated,
-      user: req.user
+      loggedInUser: req.user
     })
   },
   editEntry: async (req, res) => {
@@ -143,6 +157,7 @@ module.exports = {
       const isAuthenticated = req.isAuthenticated()
       res.render("user.ejs", {
         user: user,
+        loggedInUser: req.user,
         entries: userEntries,
         isAuthenticated: isAuthenticated,
       })
@@ -160,7 +175,7 @@ module.exports = {
       req.flash("errors", { msg: "User not found." })
       return res.redirect("/entries")
     }
-    res.render("editUser.ejs", { user: user, isAuthenticated: isAuthenticated })
+    res.render("editUser.ejs", { loggedInUser: user, isAuthenticated: isAuthenticated })
   },
   editUser: async (req, res) => {
     try {

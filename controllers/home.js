@@ -6,7 +6,7 @@ module.exports = {
     try {
       const allEntries = await Entry.find().sort({ date: "desc"}).lean();
       const isAuthenticated = req.isAuthenticated()
-      res.render("index.ejs", { entries: allEntries, isAuthenticated: isAuthenticated, user: req.user })
+      res.render("index.ejs", { entries: allEntries, isAuthenticated: isAuthenticated, loggedInUser: req.user })
     } catch (err) {
       console.log(err)
     }
@@ -15,7 +15,7 @@ module.exports = {
     try {
       const allUsers = await User.find().sort({ date: "desc"}).lean();
       const isAuthenticated = req.isAuthenticated()
-      res.render("users.ejs", { users: allUsers, isAuthenticated: isAuthenticated, user: req.user})
+      res.render("users.ejs", { users: allUsers, isAuthenticated: isAuthenticated, loggedInUser: req.user})
     } catch (err) {
       console.log(err)
     }

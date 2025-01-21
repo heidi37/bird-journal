@@ -6,6 +6,7 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/user/:id', ensureAuth, entryController.getUser)
 router.get('/', ensureAuth, entryController.getEntries)
+router.get('/allUser/:id', ensureAuth, entryController.getAllUserEntries)
 router.get('/addEntry', ensureAuth, entryController.getEntryForm)
 router.post('/addEntry', upload.single("file"), entryController.addEntry)
 router.delete('/deleteEntry/:id', entryController.deleteEntry)
