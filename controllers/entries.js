@@ -7,7 +7,6 @@ module.exports = {
   getEntries: async (req, res) => {
     try {
       const allEntries = await Entry.find({ userId: req.user._id })
-        .populate("userId", "userName")
         .sort({ date: "desc" })
         .lean()
       const isAuthenticated = req.isAuthenticated()
@@ -15,6 +14,7 @@ module.exports = {
       res.render("entries.ejs", {
         entries: allEntries,
         isAuthenticated: isAuthenticated,
+        user: req.user
       })
     } catch (err) {
       console.log(err)
@@ -40,6 +40,7 @@ module.exports = {
     res.render("entryForm.ejs", {
       title: "Add New Entry",
       isAuthenticated: isAuthenticated,
+      user: req.user
     })
   },
   addEntry: async (req, res) => {
@@ -76,6 +77,7 @@ module.exports = {
     res.render("editEntry.ejs", {
       entry: entry,
       isAuthenticated: isAuthenticated,
+      user: req.user
     })
   },
   editEntry: async (req, res) => {

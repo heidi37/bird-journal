@@ -5,8 +5,8 @@
       <div class="col-md-8">
         <div class="card-body">
           <h2>Welcome</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p><small class="text-body-secondary">Special thanks to the <a href="https://documenter.getpostman.com/view/664302/S1ENwy59#intro">eBird API</a></small></p>
+          <p>Discover the world of birds like never before with our innovative web application! Designed for bird enthusiasts and photographers alike, our platform allows you to upload stunning images of the birds you've encountered and learn fascinating details about each species. Dive into a vibrant community of like-minded users by exploring their shared uploads, engaging with their posts, and leaving likes on your favorite captures. Whether you're a seasoned ornithologist or a casual nature lover, this app is your gateway to connecting with others, sharing your passion for birdwatching, and expanding your knowledge about the incredible avian world.</p>
+          <p><small class="text-body-secondary">Special thanks to the <a href="https://documenter.getpostman.com/view/664302/S1ENwy59#intro" target="_blank">eBird API</a> and the <a href="https://www.allaboutbirds.org/" target="_blank">All About Birds</a> website</small></p>
         </div>
       </div>
       <div class="col-md-4">
@@ -16,7 +16,7 @@
   </div>
     <div class="entriesList">
         <% for(let i = 0; i < entries.length; i++) { %>
-          <div class="entry" data-id="<%= entries[i]._id %>">
+          <div data-id="<%= entries[i]._id %>">
             <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
             <div class="mb-2"><%= entries[i].likes %> 
               <form class="d-inline" action="/entries/likeEntry/<%= entries[i]._id %>?_method=PUT" method="POST">
