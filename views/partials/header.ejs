@@ -30,7 +30,8 @@
       <div><a href="/signup" class="btn btn-warning"> Signup</a></div>
       <% } %>
       <% if (isAuthenticated) { %>
-      <a href="/entries" class="btn btn-warning">My entries</a>&nbsp;
+      <a href="/entries" class="btn btn-warning">My Birds</a>&nbsp;
+      <a href="/users" class="btn btn-warning">All Birders</a>&nbsp;
       <a href="/entries/addEntry" class="btn btn-warning">Add Entry</a>&nbsp;
       <a href="/logout" class="btn btn-warning"> Logout</a>
       <a href="/entries/user/<%= user._id %>"><img class="nav-avatar" src="<%= user.image %>" alt="<%= user.userName %>"></a>

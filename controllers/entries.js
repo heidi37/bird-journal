@@ -141,7 +141,7 @@ module.exports = {
         .sort({ date: "desc" })
         .lean()
       const isAuthenticated = req.isAuthenticated()
-      res.render("userEntries.ejs", {
+      res.render("user.ejs", {
         user: user,
         entries: userEntries,
         isAuthenticated: isAuthenticated,
@@ -176,7 +176,9 @@ module.exports = {
 
       if (req.file) {
         // Delete image from Cloudinary
-        await cloudinary.uploader.destroy(user.cloudinaryId)
+        if(user.cloudinaryId) {
+          await cloudinary.uploader.destroy(user.cloudinaryId)
+        }
 
         const result = await cloudinary.uploader.upload(req.file.path, {
           folder: "bird-app/profile-photos",
