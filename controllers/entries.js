@@ -4,21 +4,6 @@ const Entry = require("../models/Entry")
 const User = require("../models/User")
 
 module.exports = {
-  getEntries: async (req, res) => {
-    try {
-      const allEntries = await Entry.find({ userId: req.user._id })
-        .sort({ date: "desc" })
-        .lean()
-      const isAuthenticated = req.isAuthenticated()
-      res.render("entries.ejs", {
-        entries: allEntries,
-        isAuthenticated: isAuthenticated,
-        loggedInUser: req.user
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  },
   getAllUserEntries: async (req, res) => {
     try {
       const allUserEntries = await Entry.find({ userId: req.params.id }).populate("userId", "userName")

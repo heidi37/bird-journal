@@ -62,7 +62,7 @@
       <div><a href="/signup" class="text-decoration-none"> signup</a></div>
       <% } %>
       <% if (isAuthenticated) { %>
-      <!-- <a href="/entries" class="btn btn-warning">my entries</a>&nbsp; -->
+      <a href="/entries/allUser/<%= loggedInUser._id %>" class="text-decoration-none me-3">my entries</a>&nbsp;
       <a href="/users" class="text-decoration-none me-3">all journalers </a>&nbsp;
       <a href="/entries/addEntry" class="text-decoration-none  me-3">add entry </a>&nbsp;
       <a href="/logout" class="text-decoration-none"> logout</a>

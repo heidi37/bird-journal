@@ -40,8 +40,9 @@ exports.postLogin = (req, res, next) => {
       if (err) {
         return next(err)
       }
+      console.log("USER LOGGED IN:", user)
       req.flash("success", { msg: "Success! You are logged in." })
-      res.redirect(req.session.returnTo || "/entries")
+      res.redirect(req.session.returnTo || "/entries/allUser/" + user._id)
     })
   })(req, res, next)
 }
