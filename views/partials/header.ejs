@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Bird Journal" />
+    <meta
+      property="og:description"
+      content="web application for bird journaling"
+    />
+    <meta
+      property="og:image"
+      content="https://nature-journal.onrender.com/images/screenshot.png"
+    />
+    <meta
+      property="og:url"
+      content="https://nature-journal.onrender.com/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Bird Journaling App" />
+    
     <link
       rel="stylesheet"
       id="font-awesome-css"
@@ -19,12 +36,25 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="/css/styles.css" />
+    <script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-SF8R56H54Q"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-SF8R56H54Q");
+</script>
     <title>Nature Journal</title>
   </head>
   <body class="d-flex flex-column min-vh-100"></body>
   <div class="container">
     <nav class="row">
-    <h1 class="mt-3 col-6"><a href="/"><i class="fa-solid fa-book"></i></i>
+    <h1 class="mt-3 col-6"><a href="/"><i class="fa-solid fa-book">/i>
       Bird Journal</a></h1>
     <div class="col-6 d-flex justify-content-end align-items-center mt-3">
     <% if (!isAuthenticated) { %>
