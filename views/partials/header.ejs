@@ -49,23 +49,23 @@
 
   gtag("config", "G-SF8R56H54Q");
 </script>
-    <title>Nature Journal</title>
+    <title>bird journal</title>
   </head>
   <body class="d-flex flex-column min-vh-100"></body>
   <div class="container">
     <nav class="row">
-    <h1 class="mt-3 col-6"><a href="/"><i class="fa-solid fa-book">/i>
-      Bird Journal</a></h1>
+    <h1 class="mt-3 col-6"><a href="/"><i class="fa-solid fa-book"></i>
+      bird journal</a></h1>
     <div class="col-6 d-flex justify-content-end align-items-center mt-3">
     <% if (!isAuthenticated) { %>
-      <div><a href="/login" class="btn btn-warning"> Login</a>&nbsp;</div>
-      <div><a href="/signup" class="btn btn-warning"> Signup</a></div>
+      <div><a href="/login" class="text-decoration-none  me-3"> login</a>&nbsp;</div>
+      <div><a href="/signup" class="text-decoration-none"> signup</a></div>
       <% } %>
       <% if (isAuthenticated) { %>
-      <a href="/entries" class="btn btn-warning">My Entries</a>&nbsp;
-      <a href="/users" class="btn btn-warning">All Birders</a>&nbsp;
-      <a href="/entries/addEntry" class="btn btn-warning">Add Entry</a>&nbsp;
-      <a href="/logout" class="btn btn-warning"> Logout</a>
+      <!-- <a href="/entries" class="btn btn-warning">my entries</a>&nbsp; -->
+      <a href="/users" class="text-decoration-none me-3">all journalers </a>&nbsp;
+      <a href="/entries/addEntry" class="text-decoration-none  me-3">add entry </a>&nbsp;
+      <a href="/logout" class="text-decoration-none"> logout</a>
       <a href="/entries/user/<%= loggedInUser._id %>"><img class="nav-avatar" src="<%= loggedInUser.image %>" alt="<%= loggedInUser.userName %>"></a>
       <% } %>
     </div>

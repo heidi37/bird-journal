@@ -18,11 +18,11 @@
         'short', day: 'numeric' }) %>
       </p>
       <p><strong>Total Entries: </strong> <%= entries.length %></p>
-      <p><a href="/entries//allUser/<%= user._id %>" class="btn btn-primary my-1">All <%= user.userName %>'s Entries</a></p>
+      <p><a href="/entries//allUser/<%= user._id %>" class="btn btn-primary my-1"><%= user.userName %>'s entries</a></p>
     </div>
 
     <div class="col-12 col-lg-2">
-      <h2>Latest</h2>
+      <h3>latest</h3>
       <div class="entriesList">
         <% for(let i = 0; i < 3; i++) { %>
         <div class="entry" data-id="<%= entries[i]._id %>">

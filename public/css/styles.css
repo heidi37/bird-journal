@@ -1,3 +1,7 @@
+:root {
+  --bs-link-color-rgb: 57, 69, 123;
+}
+
 body, html {
   height: 100%;
 }
@@ -11,14 +15,19 @@ h1 a {
   text-decoration: none;
 }
 
+h2 {
+  color: #474747;
+}
+
 h3 {
   font-size: 24px;
+  color: rgb(57, 69, 123);
 }
 
 button {
   border: none;
   background: none;
-  color: #0C5ED7;
+  color: rgb(57, 69, 123);
 }
 
 /* form styles */
@@ -123,7 +132,6 @@ footer p, footer small {
 }
 
 footer a {
-  color: #39457b;
   text-decoration: none;
   font-weight: 500;
 }
