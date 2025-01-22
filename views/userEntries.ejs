@@ -3,10 +3,11 @@
   <div class="entriesList myEntries">
   <% for(let i = 0; i < entries.length; i++) { %>
     <div class="entry" data-id="<%= entries[i]._id %>">
-      <p><%= entries[i].date %></p>
       <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
       <br/>
-      <p><strong><%= entries[i].commonName %></strong></p>
+      <p><strong><%= entries[i].commonName %></strong>
+        <br>
+        <small><%= entries[i].date %></small></p>
     </div>
     <%  } %>
   </div>

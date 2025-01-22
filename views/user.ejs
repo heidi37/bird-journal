@@ -2,10 +2,18 @@
 <section class="user-info">
   <div class="row mt-5">
     <div class="col-12 col-lg-2">
-      <a href="/entries/editUser/<%= user._id %>" type="button" class="btn btn-secondary rounded-circle">
+      <a
+        href="/entries/editUser/<%= user._id %>"
+        type="button"
+        class="btn btn-secondary rounded-circle"
+      >
         <i class="fa fa-pencil"></i>
       </a>
-      <img src="<%= user.image %>" alt="<%= user.userName %>" class="avatar rounded-circle"/>
+      <img
+        src="<%= user.image %>"
+        alt="<%= user.userName %>"
+        class="avatar rounded-circle"
+      />
     </div>
 
     <div class="col-12 col-lg-8">
@@ -18,7 +26,11 @@
         'short', day: 'numeric' }) %>
       </p>
       <p><strong>Total Entries: </strong> <%= entries.length %></p>
-      <p><a href="/entries//allUser/<%= user._id %>" class="btn btn-primary my-1"><%= user.userName %>'s entries</a></p>
+      <p>
+        <a href="/entries//allUser/<%= user._id %>" class="my-1"
+          >View all <%= user.userName %>'s entries</a
+        >
+      </p>
     </div>
 
     <div class="col-12 col-lg-2">
@@ -32,8 +44,11 @@
               src="<%= entries[i].image %>"
               alt="<%= entries[i].commonName %>"
           /></a>
-          <br/>
-          <%= entries[i].date %>
+          <p>
+            <strong><%= entries[i].commonName %></strong>
+            <br />
+            <small><%= entries[i].date %></small>
+          </p>
         </div>
         <% } %>
       </div>

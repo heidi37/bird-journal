@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="row mt-5 mb-5 entry ps-2" data-id="<%= entry._id %>">
+<div class="row mt-5 mb-2 entry ps-2 entry-box" data-id="<%= entry._id %>">
 <div class="col-12 col-lg-4 mt-5">
   <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" class="entry-image" alt="<%= entry.commonName %>"></a>
   <div class="mt-2 mb-5"><%= entry.likes %> 
@@ -14,7 +14,7 @@
   <h3>Observations</h3>
   <p><%= entry.observations %></p>
   <p><strong>User:</strong> <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
-  <p><a href="/entries/allUser/<%= entry.userId._id %>" class="btn btn-primary my-1"><%= entry.userId.userName %>'s entries</a></p>
+  <!-- <p><a href="/entries/allUser/<%= entry.userId._id %>">view all <%= entry.userId.userName %>'s entries</a></p> -->
 </div>
 <div class="col-12 col-lg-2 facts-column">
   <div class="mb-4 mt-5 text-center"><img class="w-75" src="/images/crow.png" alt="outline of crow"></div>
@@ -24,9 +24,11 @@
 </div>
 </div>
        <%if(entry.userId._id.toString() == loggedInUser.id) { %>
-          <p><a href="/entries/editEntry/<%= entry._id %>" class="btn btn-warning my-1"><i class="fa fa-pencil"></i> Edit Entry</a></p>
-          <form action="/entries/deleteEntry/<%= entry._id %>?_method=DELETE" method="POST">
-            <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> Delete</button>
-          </form>
+        <div class="edit-delete">
+        <div><a href="/entries/editEntry/<%= entry._id %>"><i class="fa fa-pencil"></i> Edit Entry</a></div>
+          <div><form action="/entries/deleteEntry/<%= entry._id %>?_method=DELETE" method="POST">
+            <button type="submit"><i class="fa fa-trash"></i> Delete</button>
+          </form></div>
+        </div>
       <% } %>
 <%- include('partials/footer') -%>

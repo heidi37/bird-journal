@@ -2,12 +2,11 @@ const mongoose = require("mongoose")
 const cloudinary = require("../middleware/cloudinary")
 const Entry = require("../models/Entry")
 const User = require("../models/User")
-const view ="notInNav"
 
 module.exports = {
   getAllUserEntries: async (req, res) => {
     try {
-      const view = "allUserEntries"
+      const viewFunction = "allUserEntries"
       const allUserEntries = await Entry.find({ userId: req.params.id }).populate("userId", "userName")
         .sort({ date: "desc" })
         .lean()
@@ -16,7 +15,7 @@ module.exports = {
         entries: allUserEntries,
         isAuthenticated: isAuthenticated,
         loggedInUser: req.user,
-        view: view
+        view: viewFunction
       })
     } catch (err) {
       console.log(err)
@@ -24,6 +23,7 @@ module.exports = {
   },
   getEntry: async (req, res) => {
     try {
+      const viewFunction = "getEntry"
       const entry = await Entry.findById(req.params.id).populate("userId")
       const isAuthenticated = req.isAuthenticated()
 
@@ -31,20 +31,20 @@ module.exports = {
         entry: entry,
         loggedInUser: req.user,
         isAuthenticated: isAuthenticated,
-        view: view
+        view: viewFunction
       })
     } catch (err) {
       console.log(err)
     }
   },
   getEntryForm: (req, res) => {
-    const view = "addEntry"
+    const viewFunction = "getEntryForm"
     const isAuthenticated = req.isAuthenticated()
     res.render("entryForm.ejs", {
       title: "Add New Entry",
       isAuthenticated: isAuthenticated,
       loggedInUser: req.user,
-      view: view
+      view: viewFunction
     })
   },
   addEntry: async (req, res) => {
@@ -71,6 +71,7 @@ module.exports = {
   },
   getEditEntryForm: async (req, res) => {
     // Find Entry by id
+    const viewFunction = "getEditEntryForm"
     let entry = await Entry.findById(req.params.id)
     const isAuthenticated = req.isAuthenticated()
 
@@ -82,6 +83,7 @@ module.exports = {
       entry: entry,
       isAuthenticated: isAuthenticated,
       loggedInUser: req.user,
+      view: viewFunction
     })
   },
   editEntry: async (req, res) => {
@@ -140,6 +142,7 @@ module.exports = {
   },
   getUser: async (req, res) => {
     try {
+      const viewFunction = "getUser"
       const user = await User.findById(req.params.id)
       const userEntries = await Entry.find({ userId: req.params.id })
         .sort({ date: "desc" })
@@ -150,7 +153,7 @@ module.exports = {
         loggedInUser: req.user,
         entries: userEntries,
         isAuthenticated: isAuthenticated,
-        view: view
+        view: viewFunction
       })
     } catch (err) {
       console.log(err)
@@ -158,7 +161,8 @@ module.exports = {
   },
   getEditUserForm: async (req, res) => {
     // Find User by id
-    let user = await User.findById(req.params.id)
+    const viewFunction = "getEditUserForm"
+    const user = await User.findById(req.params.id)
     const isAuthenticated = req.isAuthenticated()
     console.log("user", user)
 
@@ -166,7 +170,7 @@ module.exports = {
       req.flash("errors", { msg: "User not found." })
       return res.redirect("/entries")
     }
-    res.render("editUser.ejs", { loggedInUser: user, isAuthenticated: isAuthenticated, view: view })
+    res.render("editUser.ejs", { loggedInUser: user, isAuthenticated: isAuthenticated, view: viewFunction })
   },
   editUser: async (req, res) => {
     try {

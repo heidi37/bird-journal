@@ -59,13 +59,13 @@
         bird journal</a></h1>
       <div class="col-12 col-lg-6 d-flex flex-column flex-md-row justify-content-end align-items-center mt-3">
       <% if (!isAuthenticated) { %>
-        <div><a href="/login" class="text-decoration-none  me-3"> login</a>&nbsp;</div>
-        <div><a href="/signup" class="text-decoration-none"> signup</a></div>
+        <div><a href="/login" class="text-decoration-none  me-md-3"> login</a>&nbsp;</div>
+        <div><a href="/signup" class="text-decoration-none"> sign up</a></div>
         <% } %>
         <% if (isAuthenticated) { %>
-        <a href="/entries/allUser/<%= loggedInUser._id %>" class="text-decoration-none me-3 <% if (view === "allUserEntries"  && entries[0].userId._id.toString() === loggedInUser._id.toString()) { %> active <% } %>">my journal</a>&nbsp;
-        <a href="/users" class="text-decoration-none me-3 <% if (view === "allUsers") { %> active <% } %>">journalers </a>&nbsp;
-        <a href="/entries/addEntry" class="text-decoration-none  me-3 <% if (view === "addEntry") { %> active <% } %>">add entry </a>&nbsp;
+        <a href="/entries/allUser/<%= loggedInUser._id %>" class="text-decoration-none me-md-3 <% if (view === "allUserEntries"  && entries[0].userId._id.toString() === loggedInUser._id.toString()) { %> active <% } %>">my journal</a>&nbsp;
+        <a href="/users" class="text-decoration-none me-md-3 <% if (view === "allUsers") { %> active <% } %>">journalers </a>&nbsp;
+        <a href="/entries/addEntry" class="text-decoration-none  me-md-3 <% if (view === "getEntryForm") { %> active <% } %>">add entry </a>&nbsp;
         <a href="/logout" class="text-decoration-none"> logout</a>
         <a href="/entries/user/<%= loggedInUser._id %>"><img class="nav-avatar" src="<%= loggedInUser.image %>" alt="<%= loggedInUser.userName %>"></a>
         <% } %>

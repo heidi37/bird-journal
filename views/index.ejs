@@ -18,11 +18,14 @@
         <% for(let i = 0; i < entries.length; i++) { %>
           <div data-id="<%= entries[i]._id %>">
             <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
-            <div class="mb-2"><%= entries[i].likes %> 
+            <p><strong><%= entries[i].commonName %></strong>
+              <br>
+              <small><%= entries[i].date %></small></p>
+            <!-- <div class="mb-2"><%= entries[i].likes %> 
               <form class="d-inline" action="/entries/likeEntry/<%= entries[i]._id %>?_method=PUT" method="POST">
                 <button class="fa fa-thumbs-up" type="submit"></button>
               </form>
-            </div>
+            </div> -->
           </div>
           <%  } %>
         </div>

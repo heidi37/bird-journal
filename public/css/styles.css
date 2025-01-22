@@ -2,7 +2,13 @@
   --bs-link-color-rgb: 57, 69, 123;
 }
 
-body, html {
+.btn-primary {
+  --bs-btn-bg: rgb(57, 69, 123);
+  --bs-btn-border-color: rgb(57, 69, 123);
+}
+
+body,
+html {
   height: 100%;
 }
 
@@ -35,18 +41,27 @@ button {
 form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width:fit-content;
+
+  width: fit-content;
   input {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  input[type="submit"] {
+    align-self: center;
   }
 }
 
 .centered-form {
-  margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.303);
+  margin: 2rem auto 0;
+  border: 1px solid rgba(0, 0, 0, 0.142);
   border-radius: 5px;
   padding: 1rem;
+}
+
+@media(min-width: 305px) {
+  .centered-form {
+    width: 300px;
+  }
 }
 
 label {
@@ -68,7 +83,7 @@ label {
   margin-top: 2rem;
 }
 
-@media(max-width: 768px){
+@media (max-width: 768px) {
   .entriesList {
     justify-content: center;
   }
@@ -79,13 +94,29 @@ label {
 }
 
 .entry-image {
-  width: 100%
+  width: 100%;
+}
+
+.entry-box {
+  border: 1px solid rgba(0, 0, 0, 0.142);
 }
 
 .facts-column {
   background: #0c5dd738;
   padding: 1.5rem;
   border-radius: 0 5px 5px 0;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+  button:hover {
+    color: #0a58ca;
+  }
 }
 
 img {
@@ -119,7 +150,7 @@ img.thumbnail {
 .logo-text {
   text-align: left;
 }
-@media(max-width: 768px){
+@media (max-width: 768px) {
   .nav-avatar {
     margin-left: 0;
     margin-top: 1rem;
@@ -136,7 +167,8 @@ img.thumbnail {
 
 /* footer styles */
 
-footer p, footer small {
+footer p,
+footer small {
   text-align: center;
 }
 
@@ -145,7 +177,7 @@ footer a {
   font-weight: 500;
 }
 
-footer .fa-terminal{
+footer .fa-terminal {
   animation: terminal-animate 1.5s infinite;
 }
 
