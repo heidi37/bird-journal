@@ -63,7 +63,7 @@ label {
 .entriesList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -72,10 +72,6 @@ label {
   .entriesList {
     justify-content: center;
   }
-}
-
-.entriesList.myEntries {
-  justify-content: flex-start;
 }
 
 .entry {
@@ -104,7 +100,7 @@ img.thumbnail {
   object-fit: cover;
 }
 
-/* user page styles */
+/* nav and avatars */
 
 .avatar {
   width: 175px;
@@ -120,12 +116,20 @@ img.thumbnail {
   object-fit: cover;
 }
 
-/* footer styles */
-footer {
-  width: 100%;
-  padding: 0.5rem 0;
-  background: #404ea00f;
+.logo-text {
+  text-align: left;
 }
+@media(max-width: 768px){
+  .nav-avatar {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  .logo-text {
+    text-align: center;
+  }
+}
+
+/* footer styles */
 
 footer p, footer small {
   text-align: center;
