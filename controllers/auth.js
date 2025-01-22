@@ -4,7 +4,7 @@ const User = require("../models/User")
 
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect("/entries")
+    return res.redirect("/")
   }
   const isAuthenticated = req.isAuthenticated()
   res.render("login", {
@@ -70,7 +70,7 @@ exports.logout = (req, res, next) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect("/entries")
+    return res.redirect("/")
   }
   const isAuthenticated = req.isAuthenticated()
   res.render("signup", {
@@ -124,7 +124,7 @@ async function createUser(req, res, next) {
         console.log("Login error:", err);
         return next(err);
       }
-      res.redirect("/entries");
+      res.redirect("/");
     });
   } catch (err) {
     console.error("Error during signup:", err);

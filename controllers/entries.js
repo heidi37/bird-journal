@@ -15,6 +15,7 @@ module.exports = {
         entries: allUserEntries,
         isAuthenticated: isAuthenticated,
         loggedInUser: req.user,
+        requestedUser: req.params.id,
         view: viewFunction
       })
     } catch (err) {
@@ -23,6 +24,7 @@ module.exports = {
   },
   getEntry: async (req, res) => {
     try {
+      console.log("before the error in getEntry")
       const viewFunction = "getEntry"
       const entry = await Entry.findById(req.params.id).populate("userId")
       const isAuthenticated = req.isAuthenticated()
@@ -64,7 +66,8 @@ module.exports = {
         userId: req.user.id,
       })
       console.log("Entry has been added")
-      res.redirect("/entries")
+      console.log("TEST/entries req.user_id", req.user.id)
+      res.redirect("/entries/allUser/" + req.user.id)
     } catch (err) {
       console.log(err)
     }
@@ -115,7 +118,7 @@ module.exports = {
       let entry = await Entry.findById(req.params.id)
       if (!entry) {
         req.flash("errors", { msg: "Entry not found." })
-        return res.redirect("/entries")
+        return res.redirect("/entries/allUser/" + req.user._id)
       }
 
       // Delete image from Cloudinary
@@ -123,7 +126,7 @@ module.exports = {
 
       await Entry.findOneAndDelete({ _id: req.params.id })
       console.log("Deleted Entry")
-      res.redirect("/entries")
+      res.redirect("/entries/allUser/" + req.user._id)
     } catch (err) {
       console.log(err)
     }
@@ -210,3 +213,6 @@ module.exports = {
     }
   },
 }
+
+// http://localhost:3000/entries/user/6773fedf462bf7023663669c
+// http://localhost:3000/entries/user/677440ea0beb3b496cad3428

@@ -1,14 +1,21 @@
 <%- include('partials/header') -%>
-  <h2 class="mt-5"><%= entries[0].userId.userName %>'s entries</h2>
-  <div class="entriesList myEntries">
-  <% for(let i = 0; i < entries.length; i++) { %>
-    <div class="entry" data-id="<%= entries[i]._id %>">
-      <a href="/entries/<%= entries[i]._id %>"><img class="thumbnail" src="<%= entries[i].image %>" alt="<%= entries[i].commonName %>"></a>
-      <br/>
-      <p><strong><%= entries[i].commonName %></strong>
-        <br>
-        <small><%= entries[i].date %></small></p>
-    </div>
-    <%  } %>
+<h2 class="mt-5"><%= entries.length > 0 ? entries[0].userId.userName + " 's entries" : "no entries yet" %></h2>
+<div class="entriesList myEntries">
+  <% if(entries.length > 0) { for(let i = 0; i < entries.length; i++) { %>
+  <div class="entry" data-id="<%= entries[i]._id %>">
+    <a href="/entries/<%= entries[i]._id %>"
+      ><img
+        class="thumbnail"
+        src="<%= entries[i].image %>"
+        alt="<%= entries[i].commonName %>"
+    /></a>
+    <br />
+    <p>
+      <strong><%= entries[i].commonName %></strong>
+      <br />
+      <small><%= entries[i].date %></small>
+    </p>
   </div>
+  <% } } %>
+</div>
 <%- include('partials/footer') -%>

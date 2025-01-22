@@ -27,7 +27,7 @@
       </p>
       <p><strong>Total Entries: </strong> <%= entries.length %></p>
       <p>
-        <a href="/entries//allUser/<%= user._id %>" class="my-1"
+        <a href="/entries/allUser/<%= user._id %>" class="my-1"
           >View all <%= user.userName %>'s entries</a
         >
       </p>
@@ -36,7 +36,7 @@
     <div class="col-12 col-lg-2">
       <h3>latest</h3>
       <div class="entriesList">
-        <% for(let i = 0; i < 3; i++) { %>
+        <% if(entries.length > 0) { for(let i = 0; i < Math.min(3, entries.length); i++) { %>
         <div class="entry" data-id="<%= entries[i]._id %>">
           <a href="/entries/<%= entries[i]._id %>"
             ><img
@@ -50,7 +50,7 @@
             <small><%= entries[i].date %></small>
           </p>
         </div>
-        <% } %>
+        <% }} %>
       </div>
     </div>
   </div>
