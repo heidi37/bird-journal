@@ -1,4 +1,4 @@
-# Nature Journal
+# Bird Journal
 This is an application for tracking your observations in the wild.
 
 [Live Project](https://nature-journal.onrender.com/)
