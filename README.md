@@ -5,8 +5,6 @@ This is an application for tracking your observations in the wild.
 
 NOTE: hosted on free tier of render.com, may take a minute to spin up.
 
-Here is a Work In Progress Screenshot. I will be improving the design.
-
 <img src ="./public/images/screenshot.png" alt="screenshot of nature Journal">
 
 ## How It's Made:
@@ -32,7 +30,7 @@ It is in very early stage development. It needs a lot! 😁
 I learned about implementing the CRUD operations in a full stack web application.
 
 ### .env
-I also learned about environment variables.
+The .env file is wher you hid secrets and keys that should not be exposed to the public.
 
 ### MongoDB & Mongoose
 I learned about connecting to MongoDB.
@@ -61,16 +59,16 @@ I learned how to utilize Cloudinary for image hosting.
 ## Related Projects
 <table border="1">
   <tr>
-    <td style="text-align: center;"><a href="https://heidi37.pythonanywhere.com/">Let's Do Brunch App</a></td>
+    <td style="text-align: center;"><a href="https://heidi37.pythonanywhere.com/">Let's Do Brunch App</a> | <a href="https://github.com/heidi37/cs50-final-project">Repo</a></td>
   </tr>
   <tr>
-    <td><a href="https://heidi37.pythonanywhere.com/"><img width="300" src="https://github.com/heidi37/cs50-final-project/raw/main/static/images/screenshot.png" alt="screenshot of random dog photos web application" /></a></td>
+    <td><a href="https://heidi37.pythonanywhere.com/"><img width="300" src="https://github.com/heidi37/cs50-final-project/raw/main/static/images/screenshot.png" alt="screenshot of Let's Do Brunch web application" /></a></td>
   </tr>
 </table>
 
 <table border="1">
   <tr>
-    <td style="text-align: center;"><a href="https://heidifryzell.com">My Portfolio</a></td>
+    <td style="text-align: center;"><a href="https://heidifryzell.com">My Portfolio | <a href="https://github.com/heidi37/my-python-portfolio">Repo</a></td>
   </tr>
   <tr>
     <td><a href="https://heidifryzell.com"><img width="300" src="https://raw.githubusercontent.com/heidi37/my-python-portfolio/main/static/images/screenshot.png" alt="screenshot of web development portfolio built with Python" /></a></td>
