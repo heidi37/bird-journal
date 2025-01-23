@@ -28,10 +28,13 @@ It is in very early stage development. It needs a lot! 😁
 - Authentication
 
 ## Lessons Learned
+### CRUD
 I learned about implementing the CRUD operations in a full stack web application.
 
+### .env
 I also learned about environment variables.
 
+### MongoDB & Mongoose
 I learned about connecting to MongoDB.
 
 I had issues because my database collection had a different name than what I was calling it in my app.
@@ -52,8 +55,24 @@ The line above exports the 'EntrySchema' defined in the model as 'Entry' from th
 
 The userId on an entry should be the data type "ObjectId".
 
-## Related Projects
-Here is another very simple web application that accesses a static API that I built for learning purposes:
-https://heidifryzell.com/what-bird/
+### Cloudinary
+I learned how to utilize Cloudinary for image hosting.
 
-NOTE: The *What Bird* web application is hosted on free web hosting and may take up to a minute to spin up when you fill the form and make a request.
+## Related Projects
+<table border="1">
+  <tr>
+    <td style="text-align: center;"><a href="https://heidi37.pythonanywhere.com/">Let's Do Brunch App</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://heidi37.pythonanywhere.com/"><img width="300" src="https://github.com/heidi37/cs50-final-project/raw/main/static/images/screenshot.png" alt="screenshot of random dog photos web application" /></a></td>
+  </tr>
+</table>
+
+<table border="1">
+  <tr>
+    <td style="text-align: center;"><a href="https://heidifryzell.com">My Portfolio</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://heidifryzell.com"><img width="300" src="https://raw.githubusercontent.com/heidi37/my-python-portfolio/main/static/images/screenshot.png" alt="screenshot of web development portfolio built with Python" /></a></td>
+  </tr>
+</table>
