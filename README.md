@@ -1,9 +1,8 @@
 # Bird Journal
 This is an application for tracking your observations in the wild.
 
-[Live Project](https://nature-journal.onrender.com/)
+[Live Project](https://bird-journal.onrender.com/)
 
-NOTE: hosted on free tier of render.com, may take a minute to spin up.
 
 <img src ="./public/images/screenshot.png" alt="screenshot of nature Journal">
 
@@ -18,7 +17,10 @@ I originally had all my application logic in server.js but I separated the logic
 - Express
 - EJS
 - MongoDB
-- [render.com](https://render.com/) free hosting
+- Mongoose
+- Cloudinary
+- Multer
+- Passport
 
 ## Optimizations
 It is in very early stage development. It needs a lot! 😁
