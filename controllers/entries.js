@@ -24,7 +24,6 @@ module.exports = {
   },
   getEntry: async (req, res) => {
     try {
-      console.log("before the error in getEntry")
       const viewFunction = "getEntry"
       const entry = await Entry.findById(req.params.id).populate("userId")
       const isAuthenticated = req.isAuthenticated()
@@ -66,7 +65,6 @@ module.exports = {
         userId: req.user.id,
       })
       console.log("Entry has been added")
-      console.log("TEST/entries req.user_id", req.user.id)
       res.redirect("/entries/allUser/" + req.user.id)
     } catch (err) {
       console.log(err)
@@ -167,7 +165,6 @@ module.exports = {
     const viewFunction = "getEditUserForm"
     const user = await User.findById(req.params.id)
     const isAuthenticated = req.isAuthenticated()
-    console.log("user", user)
 
     if (!user) {
       req.flash("errors", { msg: "User not found." })
