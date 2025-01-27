@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+   <path d="m331,363a144,144 0 1 0 0,-288a144,144 0 1 0 0,288zm-94.7,32c-89.1,0 -161.3,72.2 -161.3,161.3c0,17 13.8,30.7 30.7,30.7l450.6,0c17,0 30.7,-13.8 30.7,-30.7c0,-89.1 -72.2,-161.3 -161.3,-161.3l-189.4,0z" id="svg_2"/>
+  </g>
+  <g id="svg_3" stroke="null" fill-opacity="0.4">
+   <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+   <path id="svg_4" d="m75,90.8125a41.90625,41.90625 0 1 0 0,-83.8125a41.90625,41.90625 0 1 0 0,83.8125zm-27.55918,9.3125c-25.92949,0 -46.94082,21.01133 -46.94082,46.94082c0,4.94727 4.01602,8.93418 8.93418,8.93418l131.13164,0c4.94727,0 8.93418,-4.01602 8.93418,-8.93418c0,-25.92949 -21.01133,-46.94082 -46.94082,-46.94082l-55.11836,0z" stroke="null" fill="#39457b"/>
+  </g>
+ </g>
+
+</svg>

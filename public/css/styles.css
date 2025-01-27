@@ -7,6 +7,11 @@
   --bs-btn-border-color: rgb(57, 69, 123);
 }
 
+.btn-outline-primary {
+  --bs-btn-color: rgb(57, 69, 123);
+  --bs-btn-border-color: rgb(57, 69, 123);
+}
+
 body,
 html {
   height: 100%;

@@ -1,10 +1,15 @@
 <%- include('partials/header') -%>
+<% if (!isAuthenticated) { %>
 <body class="container">
   <div class="mb-3 mt-5 p-5">
     <div class="row g-5">
+      
       <div class="col-md-8">
           <h2>Welcome</h2>
-          <p>Discover the world of birds like never before with our innovative web application! Designed for bird enthusiasts and photographers alike, our platform allows you to upload stunning images of the birds you've encountered and learn fascinating details about each species. Dive into a vibrant community of like-minded users by exploring their shared uploads, engaging with their posts, and leaving likes on your favorite captures. Whether you're a seasoned ornithologist or a casual nature lover, this app is your gateway to connecting with others, sharing your passion for birdwatching, and expanding your knowledge about the incredible avian world. <strong>Sign up and login to get started!</strong></p>
+          <p>Discover the world of birds like never before with our innovative web application! Designed for bird enthusiasts and photographers alike, our platform allows you to upload stunning images of the birds you've encountered and learn fascinating details about each species. Dive into a vibrant community of like-minded users by exploring their shared uploads, engaging with their posts, and leaving likes on your favorite captures. Whether you're a seasoned ornithologist or a casual nature lover, this app is your gateway to connecting with others, sharing your passion for birdwatching, and expanding your knowledge about the incredible avian world.</p>
+  
+            <div><a href="/login" class="btn btn-primary btn-lg"> log in</a>&nbsp;<a href="/signup" class="btn btn-outline-primary btn-lg"> sign up</a></div>
+            
           <!-- <p><small class="text-body-secondary">Special thanks to the <a href="https://documenter.getpostman.com/view/664302/S1ENwy59#intro" target="_blank">eBird API</a>.</small></p> -->
       </div>
       <div class="col-md-4">
@@ -12,6 +17,7 @@
       </div>
     </div>
   </div>
+  <% } %>
     <div class="entriesList">
         <% for(let i = 0; i < entries.length; i++) { %>
           <div data-id="<%= entries[i]._id %>">
