@@ -6,7 +6,7 @@ module.exports = {
   getIndex: async (req, res) => {
     try {
       const viewFunction ="getIndex"
-      const allEntries = await Entry.find().sort({ date: "desc"}).lean();
+      const allEntries = await Entry.find().sort({ date: "desc"}).populate("userId", "userName image").lean();
       const isAuthenticated = req.isAuthenticated()
       res.render("index.ejs", { entries: allEntries, isAuthenticated: isAuthenticated, loggedInUser: req.user, view: viewFunction })
     } catch (err) {
