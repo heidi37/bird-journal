@@ -17,6 +17,10 @@ const EntrySchema = new mongoose.Schema({
     type: String,
     default: "No observations", // Default value for observations
   },
+  funFact: {
+    type: String,
+    required: false,
+  },
   image: {
     type: String,
     required: true,

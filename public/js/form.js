@@ -61,5 +61,5 @@ document.getElementById("aiButton").addEventListener("click", async (event) => {
   // )}</pre>`
   document.getElementById("commonName").value = aiResponse.commonName
   document.getElementById("latinName").value = aiResponse.latinName
-  document.getElementById("observations").value = aiResponse.funFact
+  document.getElementById("funFact").value = aiResponse.funFact
 })
