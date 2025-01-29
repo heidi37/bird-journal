@@ -1,9 +1,15 @@
 <%- include('partials/header') -%>
-<form class="centered-form" action="/entries/addEntry" enctype="multipart/form-data" method="POST">
+<form class="centered-form" id="entryForm" action="/entries/addEntry" enctype="multipart/form-data" method="POST">
   <h2 class="mb-4">add entry</h2>
   <div class="formRow">
     <label for="date" class="form-label">Date</label><br>
     <input type="date" class="form-control" name="date" id="date">
+  </div>
+  <div class="formRow">
+    <label for="image" class="form-label">Image</label><br>
+    <img id="imagePreview" src="" alt="Preview"/>
+    <input type="file" class="form-control" name="file" id="image" required>
+    <button id="aiButton" class="btn btn-outline-primary">Get AI Suggestions</button>
   </div>
   <div class="formRow">
     <label for="commonName" class="form-label">Common Name</label><br>
@@ -18,14 +24,11 @@
     <textarea id="observations" class="form-control" name="observations" placeholder="This is what I saw..." rows="10"></textarea>
   </div>
   <div class="formRow">
-    <label for="image" class="form-label">Image</label><br>
-    <input type="file" class="form-control" name="file" id="image" required>
-  </div>
-  <div class="formRow">
     <!-- <label for="reference" class="form-label">Reference URL</label><br> -->
     <input type="hidden" class="form-control" name="reference" id="reference">
   </div>
   <input type="submit" class="btn btn-primary mt-2">
 </form>
+<div id="suggestions"></div>
 <script src="../js/form.js"></script>
 <%- include('partials/footer') -%>
