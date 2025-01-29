@@ -11,19 +11,23 @@ const EntrySchema = new mongoose.Schema({
   },
   latinName: {
     type: String,
-    required: true,
+    default: "Unknown", // Default value for latinName
   },
   observations: {
     type: String,
-    required: true,
+    default: "No observations", // Default value for observations
+  },
+  funFact: {
+    type: String,
+    required: false,
   },
   image: {
     type: String,
-    required: false, // Optional if some entries might not have images
+    required: true,
   },
   reference: {
     type: String,
-    required: false, // Optional if some entries might not have references
+    default: "https://www.allaboutbirds.org/guide/"
   },
   likes: {
     type: Number,

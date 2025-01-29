@@ -78,6 +78,16 @@ label {
   margin: 4px 0;
 }
 
+#imagePreview {
+  display:none;
+  max-width: 200px;
+  margin: 0 auto .75rem;
+}
+
+#aiButton {
+  display: none;
+}
+
 /* entries styles */
 
 .entriesList {

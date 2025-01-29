@@ -1,5 +1,6 @@
 const express = require("express")
 const app = express()
+const cors = require('cors');
 const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
@@ -11,6 +12,12 @@ const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main');
 const entryRoutes = require('./routes/entries')
 const PORT = process.env.PORT || 3000
+const API_BASE_URL = process.env.NODE_ENV === "production"
+  ? "https://https://bird-journal.onrender.com/"
+  : "http://localhost:3000";
+
+console.log(`Running in ${process.env.NODE_ENV} mode`);
+console.log(`API Base URL: ${API_BASE_URL}`);
 
 require('dotenv').config({ path: './config/.env' })
 
@@ -37,6 +44,9 @@ app.use(
     }),
   })
 )
+
+// Enables Cross-Origin Resource Sharing (CORS) for the application.
+app.use(cors());
 
 // Passport middleware
 app.use(passport.initialize())
