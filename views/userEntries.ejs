@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<h2 class="mt-5"><%= entries.length > 0 ? entries[0].userId.userName + " 's entries" : "no entries yet" %></h2>
+<h2 class="mt-5"><%= entries.length > 0 ? entries[0].userId.userName + "'s entries" : "no entries yet" %></h2>
 <div class="entriesList myEntries">
   <% if(entries.length > 0) { for(let i = 0; i < entries.length; i++) { %>
   <div class="entry" data-id="<%= entries[i]._id %>">

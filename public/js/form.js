@@ -28,7 +28,7 @@ document.getElementById("aiButton").addEventListener("click", async (event) => {
   const cloudinaryUrl = "https://api.cloudinary.com/v1_1/dlaie1cyx/image/upload"
   const formData = new FormData()
   formData.append("file", file)
-  formData.append("upload_preset", "bird_preview") // Replace with your unsigned upload preset
+  formData.append("upload_preset", "bird_preview")
 
   const cloudinaryResponse = await fetch(cloudinaryUrl, {
     method: "POST",
