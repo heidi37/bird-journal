@@ -7,7 +7,8 @@ module.exports = {
   getAllUserEntries: async (req, res) => {
     try {
       const viewFunction = "allUserEntries"
-      const allUserEntries = await Entry.find({ userId: req.params.id }).populate("userId", "userName")
+      const allUserEntries = await Entry.find({ userId: req.params.id })
+        .populate("userId", "userName")
         .sort({ date: "desc" })
         .lean()
       const isAuthenticated = req.isAuthenticated()
@@ -16,7 +17,7 @@ module.exports = {
         isAuthenticated: isAuthenticated,
         loggedInUser: req.user,
         requestedUser: req.params.id,
-        view: viewFunction
+        view: viewFunction,
       })
     } catch (err) {
       console.log(err)
@@ -32,7 +33,7 @@ module.exports = {
         entry: entry,
         loggedInUser: req.user,
         isAuthenticated: isAuthenticated,
-        view: viewFunction
+        view: viewFunction,
       })
     } catch (err) {
       console.log(err)
@@ -45,7 +46,7 @@ module.exports = {
       title: "Add New Entry",
       isAuthenticated: isAuthenticated,
       loggedInUser: req.user,
-      view: viewFunction
+      view: viewFunction,
     })
   },
   addEntry: async (req, res) => {
@@ -54,15 +55,19 @@ module.exports = {
       const result = await cloudinary.uploader.upload(req.file.path, {
         folder: "bird-app",
       })
+      // Create URL link to All About Birds
+      const formattedName = req.body.commonName.replace(/\s+/g, "_");
+      const testUrl = `https://www.allaboutbirds.org/guide/${formattedName}`;
+
       await Entry.create({
         date: req.body.date,
         commonName: req.body.commonName,
-        latinName: req.body.latinName,
-        observations: req.body.observations,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        reference: req.body.reference,
         userId: req.user.id,
+        reference: testUrl,
+        ...(req.body.latinName && { latinName: req.body.latinName }),
+        ...(req.body.observations && { observations: req.body.observations }),
       })
       console.log("Entry has been added")
       res.redirect("/entries/allUser/" + req.user.id)
@@ -84,7 +89,7 @@ module.exports = {
       entry: entry,
       isAuthenticated: isAuthenticated,
       loggedInUser: req.user,
-      view: viewFunction
+      view: viewFunction,
     })
   },
   editEntry: async (req, res) => {
@@ -154,7 +159,7 @@ module.exports = {
         loggedInUser: req.user,
         entries: userEntries,
         isAuthenticated: isAuthenticated,
-        view: viewFunction
+        view: viewFunction,
       })
     } catch (err) {
       console.log(err)
@@ -170,7 +175,11 @@ module.exports = {
       req.flash("errors", { msg: "User not found." })
       return res.redirect("/entries")
     }
-    res.render("editUser.ejs", { loggedInUser: user, isAuthenticated: isAuthenticated, view: viewFunction })
+    res.render("editUser.ejs", {
+      loggedInUser: user,
+      isAuthenticated: isAuthenticated,
+      view: viewFunction,
+    })
   },
   editUser: async (req, res) => {
     try {
@@ -186,7 +195,7 @@ module.exports = {
 
       if (req.file) {
         // Delete image from Cloudinary
-        if(user.cloudinaryId) {
+        if (user.cloudinaryId) {
           await cloudinary.uploader.destroy(user.cloudinaryId)
         }
 
