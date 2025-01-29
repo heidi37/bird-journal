@@ -1,5 +1,6 @@
 const express = require("express")
 const app = express()
+const cors = require('cors');
 const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
@@ -43,6 +44,9 @@ app.use(
     }),
   })
 )
+
+// Enables Cross-Origin Resource Sharing (CORS) for the application.
+app.use(cors());
 
 // Passport middleware
 app.use(passport.initialize())

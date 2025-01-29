@@ -1,7 +1,10 @@
 const mongoose = require("mongoose")
 const cloudinary = require("../middleware/cloudinary")
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const Entry = require("../models/Entry")
 const User = require("../models/User")
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
 module.exports = {
   getAllUserEntries: async (req, res) => {
@@ -49,6 +52,60 @@ module.exports = {
       view: viewFunction,
     })
   },
+  analyze: async (req, res) => {
+    try {
+      const { imageUrl } = req.body
+      if (!imageUrl) {
+        return res.status(400).json({ error: "Missing imageUrl" })
+      }
+
+      // Fetch the image and convert it to Base64
+      const imageResp = await fetch(imageUrl)
+      const imageBuffer = await imageResp.arrayBuffer()
+      const base64Image = Buffer.from(imageBuffer).toString("base64")
+
+      // Send image to Gemini for analysis
+      const result = await model.generateContent([
+        {
+          inlineData: {
+            data: base64Image,
+            mimeType: "image/jpeg",
+          },
+        },
+        `Answer these questions about this bird image:
+        1. Common Name:
+        2. Latin Name:
+        3. Fun Fact:
+        `,
+      ])
+
+      const fullText = await result.response.text()
+      const plainText = fullText.replace(/\*(.*?)\*/g, "$1") // Remove Markdown-style bold formatting
+
+      // Extract bird details using regex
+      const extractInfo = (regex, text) => {
+        const match = text.match(regex)
+        return match ? match[1].trim() : null
+      }
+
+      const commonName = extractInfo(/Common Name:\s*(.*)/i, plainText)
+      const latinName = extractInfo(/Latin Name:\s*(.*)/i, plainText)
+      const funFact = extractInfo(/Fun Fact:\s*(.*)/i, plainText)
+
+      // Error Handling: Check if all values were extracted
+      if (!commonName || !latinName || !funFact) {
+        console.error(
+          "Failed to extract all bird information. Check Gemini's response and adjust regex patterns."
+        )
+      }
+
+      // Return extracted data to frontend
+      res.json({ commonName, latinName, funFact })
+    } catch (error) {
+      console.error("Error processing Gemini request:", error)
+      res.status(500).json({ error: "Failed to analyze image" })
+    }
+  },
   addEntry: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -56,8 +113,8 @@ module.exports = {
         folder: "bird-app",
       })
       // Create URL link to All About Birds
-      const formattedName = req.body.commonName.replace(/\s+/g, "_");
-      const testUrl = `https://www.allaboutbirds.org/guide/${formattedName}`;
+      const formattedName = req.body.commonName.replace(/\s+/g, "_")
+      const testUrl = `https://www.allaboutbirds.org/guide/${formattedName}`
 
       await Entry.create({
         date: req.body.date,
