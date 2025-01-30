@@ -170,6 +170,15 @@ img.thumbnail {
   background: #fff;
 }
 
+.entry-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  margin-bottom: .5rem;
+}
+
 .nav-avatar {
   width: 50px;
   height: 50px;

@@ -8,20 +8,15 @@
     </form>
   </div>
 </div>
-<div class="col-12 col-lg-6 mt-5">
+<div class="col-12 col-lg-8 mt-5">
   <h2><%= entry.commonName %></h2>
   <p><%= entry.date %></p>
+  <p><strong>Latin Name:</strong> <%= entry.latinName %></p>
   <h3>Observations</h3>
   <p><%= entry.observations %></p>
-  <p><strong>User:</strong> <a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
-  <!-- <p><a href="/entries/allUser/<%= entry.userId._id %>">view all <%= entry.userId.userName %>'s entries</a></p> -->
-</div>
-<div class="col-12 col-lg-2 facts-column">
-  <div class="mb-4 mt-5 text-center"><img class="w-75" src="/images/crow.png" alt="outline of crow"></div>
-  <p><strong>Common Name:</strong> <%= entry.commonName %></p>
-  <p><strong>Latin Name:</strong> <%= entry.latinName %></p>
-  <p><strong>Fun Fact:</strong> <%= entry.funFact %></p>
-  <p class="text-center mt-5"><a href="<%= entry.reference %>" target="_blank" class="btn btn-primary">Learn More</a></p>
+  <%if(entry.funFact && entry.funFact.length > 0){ %><p><strong>Fun Fact:</strong> <%= entry.funFact %></p><% } %>
+  <p class="mt-1"><a href="<%= entry.reference %>" target="_blank" class="btn btn-primary">Learn More</a></p>
+  <a href="/entries/user/<%= entry.userId._id %>"><img src="<%= entry.userId.image %>" width="50px" class="entry-avatar mt-5" alt="<%= entry.userId.userName %>"></a><br><a href="/entries/user/<%= entry.userId._id %>"><%= entry.userId ? entry.userId.userName : "Unknown" %></a></p>
 </div>
 </div>
        <%if(entry.userId._id.toString() == loggedInUser.id) { %>
