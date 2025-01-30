@@ -6,12 +6,12 @@
       <img src="<%= loggedInUser.image %>" alt="current user image" class="avatar rounded-circle mb-2" id="avatar"> 
       </p>
       <p><strong>Username:</strong> <%= loggedInUser.userName %></p>
+      <div class="formRow">
+        <label for="cloudinaryId" class="form-label"><strong>Change User Image</strong></label><br>
+        <input type="file" class="form-control" name="file" id="cloudinaryId">
+      </div>
     <label for="about" class="form-label"><strong>About Me</strong></label><br>
     <textarea id="about" class="form-control" name="about" rows="10"><%=loggedInUser.about%></textarea>
-  </div>
-  <div class="formRow">
-    <label for="cloudinaryId" class="form-label"><strong>Change User Image</strong></label><br>
-    <input type="file" class="form-control" name="file" id="cloudinaryId">
   </div>
   <input type="submit" class="btn btn-primary mt-2">
 </form>
