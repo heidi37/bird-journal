@@ -1,5 +1,5 @@
 # Bird Journal
-This is an application for tracking your observations in the wild.
+This is an application for tracking your observations in the wild. When you upload a photo you have the option of getting suggestions for the bird's Common Name, Latin Name an a fun fact using AI.
 
 [Live Project](https://bird-journal.onrender.com/)
 
@@ -21,18 +21,20 @@ I originally had all my application logic in server.js but I separated the logic
 - Cloudinary
 - Multer
 - Passport
+- Gemini Flash 1.5 API
 
 ## Optimizations
-It is in very early stage development. It needs a lot! 😁
-- manage CRUD with mongoDB Ids
-- Authentication
+- Use a WYSIWYG editor for entering observations
+- Add a list of other posts about the same bird on the entry page
+- Add the ability to have "friends" on the app with shortcuts to their posts
+- Add ability to post multiple photos
 
 ## Lessons Learned
 ### CRUD
 I learned about implementing the CRUD operations in a full stack web application.
 
 ### .env
-The .env file is wher you hid secrets and keys that should not be exposed to the public.
+The .env file is where you hide secrets and keys that should not be exposed to the public.
 
 ### MongoDB & Mongoose
 I learned about connecting to MongoDB.
@@ -40,18 +42,6 @@ I learned about connecting to MongoDB.
 I had issues because my database collection had a different name than what I was calling it in my app.
 
 I learned how to use different names for your collections inside the application.
-
-Along the way I somehow generated a "test" database with an "entries" collection. The string I copied from MongoDB Atlas did not have the database name in it. Apparently without a database name in the connection string Mongoose will default to "test".
-
-Specifying the cluster in the connection string is not required but the string MongoDB Atlas gives you will have it in it at the end.
-
-Also specifying the exact collection name in the model as a third parameter was required. If you don't specify one, the lowercase plural tense of the first parameter is supposed to be used.
-
-```
-module.exports = mongoose.model('Entry', EntrySchema, 'entries');
-```
-
-The line above exports the 'EntrySchema' defined in the model as 'Entry' from the 'entries' collection.
 
 The userId on an entry should be the data type "ObjectId".
 
