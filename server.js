@@ -60,6 +60,21 @@ app.use(methodOverride("_method"));
 app.use('/', mainRoutes);
 app.use('/entries', entryRoutes)
 
+// 404 Handler (MUST be the last middleware)
+app.use((req, res) => {
+  const isAuthenticated = req.isAuthenticated()
+  res.status(404).render("404", { isAuthenticated: isAuthenticated, loggedInUser: req.user, view: 404 });
+});
+
+// 500 Handler
+app.use((err, req, res, next) => {
+  const isAuthenticated = req.isAuthenticated()
+  console.error("Server Error:", err); // Logs full error to console
+  res.status(500).render("500", { isAuthenticated: isAuthenticated, loggedInUser: req.user, view: 500 });
+});
+
+
+
 app.listen(PORT, function () {
   console.log(`listening on ${PORT}`)
 })

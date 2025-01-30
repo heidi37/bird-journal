@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
 module.exports = {
-  getAllUserEntries: async (req, res) => {
+  getAllUserEntries: async (req, res, next) => {
     try {
       const viewFunction = "allUserEntries"
       const allUserEntries = await Entry.find({ userId: req.params.id })
@@ -22,11 +22,11 @@ module.exports = {
         requestedUser: req.params.id,
         view: viewFunction,
       })
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      next(error)
     }
   },
-  getEntry: async (req, res) => {
+  getEntry: async (req, res, next) => {
     try {
       const viewFunction = "getEntry"
       const entry = await Entry.findById(req.params.id).populate("userId")
@@ -38,8 +38,8 @@ module.exports = {
         isAuthenticated: isAuthenticated,
         view: viewFunction,
       })
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      next(error)
     }
   },
   getEntryForm: (req, res) => {
@@ -106,7 +106,7 @@ module.exports = {
       res.status(500).json({ error: "Failed to analyze image" })
     }
   },
-  addEntry: async (req, res) => {
+  addEntry: async (req, res, next) => {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path, {
@@ -129,8 +129,8 @@ module.exports = {
       })
       console.log("Entry has been added")
       res.redirect("/entries/allUser/" + req.user.id)
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      next(error)
     }
   },
   getEditEntryForm: async (req, res) => {
@@ -150,7 +150,7 @@ module.exports = {
       view: viewFunction,
     })
   },
-  editEntry: async (req, res) => {
+  editEntry: async (req, res, next) => {
     try {
       // Find Entry by id
       let entry = await Entry.findById(req.params.id)
@@ -169,11 +169,11 @@ module.exports = {
       })
       console.log("Updated Entry")
       res.redirect("/entries/" + req.params.id)
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      next(error)
     }
   },
-  deleteEntry: async (req, res) => {
+  deleteEntry: async (req, res, next) => {
     try {
       // Find Entry by id
       let entry = await Entry.findById(req.params.id)
@@ -188,11 +188,11 @@ module.exports = {
       await Entry.findOneAndDelete({ _id: req.params.id })
       console.log("Deleted Entry")
       res.redirect("/entries/allUser/" + req.user._id)
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      next(error)
     }
   },
-  likeEntry: async (req, res) => {
+  likeEntry: async (req, res, next) => {
     try {
       await Entry.findOneAndUpdate(
         { _id: req.params.id },
@@ -200,11 +200,11 @@ module.exports = {
       )
       console.log("Liked Entry")
       res.redirect(req.get("referer"))
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      next(error)
     }
   },
-  getUser: async (req, res) => {
+  getUser: async (req, res, next) => {
     try {
       const viewFunction = "getUser"
       const user = await User.findById(req.params.id)
@@ -219,8 +219,8 @@ module.exports = {
         isAuthenticated: isAuthenticated,
         view: viewFunction,
       })
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      next(error)
     }
   },
   getEditUserForm: async (req, res) => {
