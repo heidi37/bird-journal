@@ -3,7 +3,7 @@
   <h2 class="mb-4">edit user</h2>
   <div class="formRow">
     <p>
-      <img src="<%= loggedInUser.image %>" alt="current user image" class="avatar rounded-circle mb-2"> 
+      <img src="<%= loggedInUser.image %>" alt="current user image" class="avatar rounded-circle mb-2" id="avatar"> 
       </p>
       <p><strong>Username:</strong> <%= loggedInUser.userName %></p>
     <label for="about" class="form-label"><strong>About Me</strong></label><br>
@@ -15,4 +15,5 @@
   </div>
   <input type="submit" class="btn btn-primary mt-2">
 </form>
+<script src="/js/userForm.js"></script>
 <%- include('partials/footer') -%>
