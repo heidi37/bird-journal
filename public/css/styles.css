@@ -44,16 +44,16 @@ button {
 /* form styles */
 
 form {
-  display: flex;
-  flex-direction: column;
-
-  width: fit-content;
+  // display: flex;
+  // flex-direction: column;
+  // width: fit-content;
   input {
     margin-bottom: 0.5rem;
   }
-  input[type="submit"] {
-    align-self: center;
-  }
+  // input[type="submit"] {
+  //   display:flex;
+  //   justify-content: flex-end;
+  // }
 }
 
 .centered-form {
@@ -63,9 +63,9 @@ form {
   padding: 1rem;
 }
 
-@media(min-width: 305px) {
+@media(min-width: 768px) {
   .centered-form {
-    width: 300px;
+    width: 600px;
   }
 }
 
