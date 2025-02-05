@@ -24,6 +24,7 @@ I originally had all my application logic in server.js but I separated the logic
 - Gemini Flash 1.5 API
 
 ## Optimizations
+- Use a middleware to compress large photos
 - Use a WYSIWYG editor for entering observations
 - Add a list of other posts about the same bird on the entry page
 - Add the ability to have "friends" on the app with shortcuts to their posts
@@ -37,9 +38,7 @@ I learned about implementing the CRUD operations in a full stack web application
 The .env file is where you hide secrets and keys that should not be exposed to the public.
 
 ### MongoDB & Mongoose
-I learned about connecting to MongoDB.
-
-I had issues because my database collection had a different name than what I was calling it in my app.
+I learned about connecting to MongoDB and Mongoose to simplify access the database.
 
 I learned how to use different names for your collections inside the application.
 

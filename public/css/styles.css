@@ -61,6 +61,7 @@ form {
   border: 1px solid rgba(0, 0, 0, 0.142);
   border-radius: 5px;
   padding: 1rem;
+  min-width: 215px;
 }
 
 @media(min-width: 768px) {

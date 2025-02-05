@@ -6,10 +6,15 @@
     <% } %>
     <form class="centered-form" action="/signup" method="POST">
         <h2 class="mb-4">sign up</h2>
+        <p>Password must be at least 8 characters long.</p>
         <input type="text" name="userName" placeholder="User Name">
+        <br>
         <input type="email" name="email" placeholder="Email">
+        <br>
         <input type="password" name="password" placeholder="Password">
+        <br>
         <input type="password" name="confirmPassword" placeholder="Confirm Password">
+        <br>
         <input type="submit" class="btn btn-primary mt-2">
     </form>
 <%- include('partials/footer') -%>
