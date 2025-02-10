@@ -111,6 +111,7 @@ module.exports = {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path, {
         folder: "bird-app",
+        transformation: [{width: 800, crop: "limit"}]
       })
       // Create URL link to All About Birds
       const formattedName = req.body.commonName.replace(/\s+/g, "_")
@@ -259,6 +260,7 @@ module.exports = {
 
         const result = await cloudinary.uploader.upload(req.file.path, {
           folder: "bird-app/profile-photos",
+          transformation: [{width: 500, crop: "limit"}]
         })
         updateData.cloudinaryId = result.public_id
         updateData.image = result.secure_url
@@ -278,5 +280,3 @@ module.exports = {
   },
 }
 
-// http://localhost:3000/entries/user/6773fedf462bf7023663669c
-// http://localhost:3000/entries/user/677440ea0beb3b496cad3428
