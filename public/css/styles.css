@@ -78,7 +78,8 @@ label {
   margin: 0 auto .75rem;
 }
 
-#aiButton {
+#aiButton,
+#aiText {
   display: none;
 }
 
@@ -90,6 +91,9 @@ label {
   justify-content: flex-start;
   gap: 1rem;
   margin-top: 2rem;
+  .entry {
+    max-width: 200px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -98,10 +102,9 @@ label {
   }
 }
 
-.entry {
-  border-radius: 5px;
-  max-width: 200px;
-}
+// .entry {
+//   border-radius: 5px;
+// }
 
 .entry-image {
   width: 100%;

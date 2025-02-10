@@ -123,7 +123,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         userId: req.user.id,
-        reference: testUrl,
+        reference: req.body.reference || testUrl,
         funFact: req.body.funFact,
         ...(req.body.latinName && { latinName: req.body.latinName }),
         ...(req.body.observations && { observations: req.body.observations }),
@@ -279,4 +279,3 @@ module.exports = {
     }
   },
 }
-
