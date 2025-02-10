@@ -4,7 +4,7 @@ This is an application for tracking your observations in the wild. When you uplo
 [Live Project](https://bird-journal.onrender.com/)
 
 
-<img src ="./public/images/screenshot.png" alt="screenshot of nature Journal">
+<img src ="./public/images/bird-journal.gif" alt="screenshot of nature Journal">
 
 ## How It's Made:
 This is a node.js/Express API, using EJS templates and a MongoDB database. I built this for [#100devs](https://100devs.org/about).
