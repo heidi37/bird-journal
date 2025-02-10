@@ -100,6 +100,7 @@ label {
 
 .entry {
   border-radius: 5px;
+  max-width: 200px;
 }
 
 .entry-image {
