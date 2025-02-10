@@ -26,7 +26,13 @@
         <button id="aiButton" class="btn btn-outline-primary">
           Get AI Suggestions
         </button>
-        <div class="mb-5"><small id="aiText">Use the suggestions provided by AI for "Common Name", "Latin Name" and "Fun Facts" or add your own. Sometimes the AI is incorrect. Please verify AI results before posting.</small></div>
+        <div class="mb-5">
+          <small id="aiText"
+            >Use the suggestions provided by AI for "Common Name", "Latin Name"
+            and "Fun Facts" or add your own. Sometimes the AI is incorrect.
+            Please verify AI results before posting.</small
+          >
+        </div>
       </div>
       <div id="suggestions" class="formRow"></div>
       <div class="formRow">
@@ -75,13 +81,13 @@
     </div>
     <div class="formRow">
       <label for="reference" class="form-label">Reference URL</label><br />
+      <input type="url" class="form-control" name="reference" id="reference" />
       <small
         >If you have a link to more information about the bird you may enter it
         here, otherwise a link to the
         <a href="https://www.allaboutbirds.org/">All About Birds</a> website
         will be auto-generated.</small
       >
-      <input type="url" class="form-control" name="reference" id="reference" />
     </div>
     <div class="formRow">
       <input type="submit" class="btn btn-primary mt-2 w-auto" />

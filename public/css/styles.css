@@ -47,6 +47,9 @@ form {
   input {
     margin-bottom: 0.5rem;
   }
+  label {
+    font-weight: 500;
+  }
 }
 
 .centered-form {
@@ -101,10 +104,6 @@ label {
     justify-content: center;
   }
 }
-
-// .entry {
-//   border-radius: 5px;
-// }
 
 .entry-image {
   width: 100%;
