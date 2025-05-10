@@ -16,6 +16,7 @@ I originally had all my application logic in server.js but I separated the logic
 - node.js
 - Express
 - EJS
+- MVC
 - MongoDB
 - Mongoose
 - Cloudinary
