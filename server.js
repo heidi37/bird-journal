@@ -40,7 +40,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-      mongoUrl: process.env.DB_STRING, 
+      mongoUrl: process.env.DB_STRING,
+      ttl: 60 * 60 * 24 * 30 // 30 days in seconds
     }),
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
