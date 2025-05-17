@@ -29,10 +29,10 @@ const EntrySchema = new mongoose.Schema({
     type: String,
     default: "https://www.allaboutbirds.org/guide/"
   },
-  likes: {
-    type: Number,
-    default: 0, // Default value for likes
-  },
+  likes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  }],
   cloudinaryId: {
     type: String,
     require: true,

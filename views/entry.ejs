@@ -2,7 +2,7 @@
 <div class="row mt-5 mb-2 entry ps-2 entry-box" data-id="<%= entry._id %>">
 <div class="col-12 col-lg-4 mt-5">
   <a href="/entries/<%= entry._id %>"><img src="<%= entry.image %>" class="entry-image" alt="<%= entry.commonName %>"></a>
-  <div class="mt-2 mb-5"><%= entry.likes %> 
+  <div class="mt-2 mb-5"><%= entry.likes.length %> 
     <form class="d-inline" action="/entries/likeEntry/<%= entry._id %>?_method=PUT" method="POST">
       <button class="fa fa-thumbs-up" type="submit"></button>
     </form>

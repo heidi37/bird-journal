@@ -195,14 +195,35 @@ module.exports = {
   },
   likeEntry: async (req, res, next) => {
     try {
-      await Entry.findOneAndUpdate(
-        { _id: req.params.id },
-        { $inc: { likes: 1 } }
-      )
-      console.log("Liked Entry")
-      res.redirect(req.get("referer"))
+      const userId = req.user._id; // or wherever you get the logged-in user's id
+  
+      const entry = await Entry.findById(req.params.id);
+  
+      if (!entry) {
+        return res.status(404).send('Entry not found');
+      }
+  
+      // Check if userId already liked this entry
+      const alreadyLiked = entry.likes.some(
+        (id) => id.toString() === userId.toString()
+      );
+  
+      if (alreadyLiked) {
+        // Remove userId from likes array (unlike)
+        entry.likes = entry.likes.filter(
+          (id) => id.toString() !== userId.toString()
+        );
+      } else {
+        // Add userId to likes array
+        entry.likes.push(userId);
+      }
+  
+      await entry.save();
+  
+      console.log(alreadyLiked ? "Unliked Entry" : "Liked Entry");
+      res.redirect(req.get("referer"));
     } catch (error) {
-      next(error)
+      next(error);
     }
   },
   getUser: async (req, res, next) => {
