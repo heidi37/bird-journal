@@ -42,6 +42,12 @@ app.use(
     store: new MongoStore({
       mongoUrl: process.env.DB_STRING, 
     }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+      httpOnly: true,                 // Helps mitigate XSS
+      sameSite: 'lax',                // Balances CSRF protection and usability
+      secure: true                   // Set to true if using HTTPS in production
+    }
   })
 )
 
