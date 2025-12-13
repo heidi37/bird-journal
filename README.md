@@ -22,7 +22,7 @@ I originally had all my application logic in server.js but I separated the logic
 - Cloudinary
 - Multer
 - Passport
-- Gemini Flash 1.5 API
+- Gemini Flash 2.5
 
 ## Optimizations
 - Use a middleware to compress large photos
@@ -47,6 +47,9 @@ The userId on an entry should be the data type "ObjectId".
 
 ### Cloudinary
 I learned how to utilize Cloudinary for image hosting.
+
+### Gemini
+Gemini Flash 1.5 stopped working in my app. I had to change to Gemini Flash 2.5. I also had to set up a billing account in Google Cloud. There were changes in the way Gemini Flash 2.5 wanted the prompt formatted.
 
 ## Related Projects
 <table border="1">

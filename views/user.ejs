@@ -2,6 +2,7 @@
 <section class="user-info">
   <div class="row mt-5">
     <div class="col-12 col-lg-2">
+      <% if (loggedInUser && loggedInUser._id.equals(user._id)) { %>
       <a
         href="/entries/editUser/<%= user._id %>"
         type="button"
@@ -9,6 +10,7 @@
       >
         <i class="fa fa-pencil"></i>
       </a>
+      <% } %>
       <img
         src="<%= user.image %>"
         alt="<%= user.userName %>"
@@ -36,7 +38,8 @@
     <div class="col-12 col-lg-2">
       <h3>latest</h3>
       <div class="entriesList">
-        <% if(entries.length > 0) { for(let i = 0; i < Math.min(3, entries.length); i++) { %>
+        <% if(entries.length > 0) { for(let i = 0; i < Math.min(3,
+        entries.length); i++) { %>
         <div class="entry" data-id="<%= entries[i]._id %>">
           <a href="/entries/<%= entries[i]._id %>"
             ><img
